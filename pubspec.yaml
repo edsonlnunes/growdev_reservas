@@ -46,8 +46,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/utils/lang/pt.json
-    - lib/utils/lang/en.json
+    - assets/lang/pt.json
+    - assets/lang/en.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

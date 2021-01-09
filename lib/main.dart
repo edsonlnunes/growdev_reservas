@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'utils/lang/demo_localizations.dart';
-import 'utils/lang/demo_localizations_delegate.dart';
+import 'utils/lang/localizacoes.dart';
+import 'utils/lang/determinar_localizacao.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         const Locale('pt', 'BR'),
         const Locale('en', 'US'),
-        const Locale('es', 'ES'),
       ],
       localizationsDelegates: [
-        const DemoLocalizationsDelegate(),
+        const DeterminarLocalizacao(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
@@ -71,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              DemoLocalizations.of(context).traduzir('ja_possui_uma_conta'),
+              Localizacoes.of(context).traduzir('CONFIRMAR'),
             ),
             Text(
               '$_counter',
