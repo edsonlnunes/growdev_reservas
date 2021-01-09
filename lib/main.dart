@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
@@ -34,8 +35,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Color(0xff2b385b),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      initialRoute: '/aulas-disponiveis',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/aulas-disponiveis': (context) => AulasDisponiveisPage(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+      },
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
