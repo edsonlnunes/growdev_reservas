@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'utils/lang/demo_localizations.dart';
+import 'utils/lang/demo_localizations_delegate.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,6 +11,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      supportedLocales: [
+        const Locale('pt', 'BR'),
+        const Locale('en', 'US'),
+        const Locale('es', 'ES'),
+      ],
+      localizationsDelegates: [
+        const DemoLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      localeResolutionCallback:
+          (Locale locale, Iterable<Locale> supportedLocales) {
+        for (Locale supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale.languageCode ||
+              supportedLocale.countryCode == locale.countryCode) {
+            return supportedLocale;
+          }
+        }
+
+        return supportedLocales.first;
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -47,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              DemoLocalizations.of(context).traduzir('ja_possui_uma_conta'),
             ),
             Text(
               '$_counter',
