@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gd_reservas/layouts/widgets/modal_cancelar.widget.dart';
 import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
@@ -80,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => modalShowDialog(context),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
