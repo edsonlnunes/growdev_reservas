@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../models/aula.dart';
 import '../widgets/aula_card.widget.dart';
 
 class AulasDisponiveisPage extends StatelessWidget {
@@ -40,33 +41,21 @@ class AulasDisponiveisPage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                AulaCardWidget(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return AulaCardWidget(
+                  aula: Aula(
                   data: '26/11/2020',
                   hora: '13:30h',
                   status: 'Aguardando',
-                  statusLabel: 'Status',
-                  callback: () => print('Adicionar aula'),
                   vagas: 4,
-                  iconData: Icons.add,
-                ),
-                AulaCardWidget(
-                  data: '26/11/2020',
-                  hora: '13:30h',
-                  status: 'Aguardando',
+                  ),
                   statusLabel: 'Status',
-                  callback: () => print('Adicionar aula'),
-                  vagas: 4,
+                  callback: () => print('Adicionar aula'),                  
                   iconData: Icons.add,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-              ],
+                );
+              },
             ),
           ),
         ],

@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/models/aula.dart';
 
 class AulaCardWidget extends StatelessWidget {
-  final String data;
-  final String hora;
-  final String status;
+  final Aula aula;
   final String statusLabel;
-  final int vagas;
   final IconData iconData;
   final Function callback;
 
   const AulaCardWidget({
     Key key,
-    @required this.data,
-    @required this.hora,
-    @required this.status,
+    @required this.aula,
     @required this.statusLabel,
     @required this.iconData,
     @required this.callback,
-    this.vagas,
   }) : super(key: key);
 
   @override
@@ -47,7 +42,7 @@ class AulaCardWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      data,
+                      aula.data,
                       style: TextStyle(
                         color: Color(0xff707070),
                         fontWeight: FontWeight.bold,
@@ -66,7 +61,7 @@ class AulaCardWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      hora,
+                      aula.hora,
                       style: TextStyle(
                         color: Color(0xff707070),
                         fontWeight: FontWeight.bold,
@@ -89,7 +84,8 @@ class AulaCardWidget extends StatelessWidget {
                       children: [
                         RichText(
                           text: TextSpan(
-                            text: '$statusLabel: ${vagas == null ? '\n' : ''}',
+                            text:
+                                '$statusLabel: ${aula.vagas == null ? '\n' : ''}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color(0xff707070),
@@ -97,7 +93,7 @@ class AulaCardWidget extends StatelessWidget {
                             ),
                             children: <TextSpan>[
                               TextSpan(
-                                text: '$status',
+                                text: '${aula.status}',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal),
@@ -105,9 +101,9 @@ class AulaCardWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        vagas != null
+                        aula.vagas != null
                             ? Text(
-                                'Vagas restantes: $vagas',
+                                'Vagas restantes: ${aula.vagas}',
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: Color(0xff707070),
