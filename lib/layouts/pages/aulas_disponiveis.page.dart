@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/layouts/widgets/modal_confirmar_inscricao.widget.dart';
 import '../../models/aula.dart';
 import '../widgets/aula_card.widget.dart';
 
@@ -46,13 +47,13 @@ class AulasDisponiveisPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return AulaCardWidget(
                   aula: Aula(
-                  data: '26/11/2020',
-                  hora: '13:30h',
-                  status: 'Aguardando',
-                  vagas: 4,
+                    data: '26/11/2020',
+                    hora: '13:30h',
+                    status: 'Aguardando',
+                    vagas: 4,
                   ),
                   statusLabel: 'Status',
-                  callback: () => print('Adicionar aula'),                  
+                  callback: () => showModalConfirmarInscricao(context),
                   iconData: Icons.add,
                 );
               },
@@ -61,5 +62,5 @@ class AulasDisponiveisPage extends StatelessWidget {
         ],
       ),
     );
-  }
+  }  
 }
