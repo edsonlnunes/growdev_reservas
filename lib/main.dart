@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'utils/lang/localizacoes.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'layouts/pages/login.page.dart';
+import 'layouts/widgets/fade_animation.dart';
 import 'utils/lang/determinar_localizacao.dart';
+
+bool ativo = false;
 
 void main() {
   runApp(MyApp());
@@ -43,7 +48,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
 
   @override
@@ -51,39 +55,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              Localizacoes.of(context).traduzir('CONFIRMAR'),
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return Stack(
+      children: <Widget>[
+        SplashScreen(
+          seconds: 6,
+          navigateAfterSeconds: LoginPage(title: 'Reservas GrowDev'),
+          loaderColor: Colors.transparent,
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+        Center(
+          child: FadeAnimation(
+            2.0,
+            Container(
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(
+                      "assets/img/png/logo_transparente_laranja.png"),
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
