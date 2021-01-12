@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gd_reservas/layouts/widgets/modal_cancelar.widget.dart';
+import 'package:gd_reservas/themes/theme.dart';
 import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
@@ -33,10 +34,7 @@ class MyApp extends StatelessWidget {
         return supportedLocales.first;
       },
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: growDevTheme(),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -71,6 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
+              ' is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in',
+              style: TextStyle(fontSize: 22, fontFamily: 'Poppins'),
+            ),
+            Text(
               Localizacoes.of(context).traduzir('CONFIRMAR'),
             ),
             Text(
@@ -81,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).buttonColor,
         onPressed: () => modalShowDialog(context),
         tooltip: 'Increment',
         child: Icon(Icons.add),
