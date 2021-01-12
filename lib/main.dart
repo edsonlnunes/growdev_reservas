@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'layouts/pages/login.page.dart';
 import 'layouts/widgets/fade_animation.dart';
+import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
+import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
 bool ativo = false;
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        primaryColor: Color(0xff2b385b),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
