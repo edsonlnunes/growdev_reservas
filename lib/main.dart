@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gd_reservas/themes/theme.dart';
+
 import 'package:splashscreen/splashscreen.dart';
 import 'layouts/pages/login.page.dart';
 import 'layouts/widgets/fade_animation.dart';
@@ -38,11 +40,7 @@ class MyApp extends StatelessWidget {
         return supportedLocales.first;
       },
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color(0xff2b385b),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: growDevTheme(),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
