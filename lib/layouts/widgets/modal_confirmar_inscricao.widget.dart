@@ -47,7 +47,7 @@ Future<void> showModalConfirmarInscricao(context) async {
                       fontSize: 16,
                     ),
                   ),
-                  color: Color(0xffe16e0e),
+                  color: Theme.of(context).accentColor,
                   padding: EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),

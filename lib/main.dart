@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gd_reservas/layouts/widgets/modal_cancelar.widget.dart';
+import 'package:gd_reservas/themes/theme.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'layouts/pages/login.page.dart';
 import 'layouts/widgets/fade_animation.dart';
 import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
+import 'layouts/widgets/modal_cancelar.widget.dart';
+import 'layouts/widgets/modal_form.dart';
 import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
@@ -38,20 +42,21 @@ class MyApp extends StatelessWidget {
         return supportedLocales.first;
       },
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Color(0xff2b385b),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      theme: growDevTheme(),
+      home: Modal(
+        flag: true,
+        text: 'Você tem certeza que quer cancelar este agendamento?',
+        buttonText: 'atualizar informações'.toUpperCase(),
+        hintText: 'E-mail',
+        hintText2: 'Telefone',
+        obscureText: false,
+        onPressed: () {},
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -75,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      "assets/img/png/logo_transparente_laranja.png"),
+                      "assets/img/Png/logo_transparente_laranja.png"),
                   fit: BoxFit.contain,
                 ),
               ),
