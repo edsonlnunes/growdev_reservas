@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/logo_transparente_laranja" />
+            android:src="@drawable/launch" />
     </item>
 </layer-list>
