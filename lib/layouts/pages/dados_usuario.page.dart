@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
 import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 
 class DadosUsuarioPage extends StatelessWidget {
@@ -6,23 +7,7 @@ class DadosUsuarioPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xfff8f8f8),
-      appBar: AppBar(
-        title: Text('Aulas da Growdev'),
-        backgroundColor: Theme.of(context).primaryColor,
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.exit_to_app,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          )
-        ],
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Image.asset('assets/icons/logo.png'),
-        ),
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
