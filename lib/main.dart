@@ -43,15 +43,7 @@ class MyApp extends StatelessWidget {
       },
       title: 'Flutter Demo',
       theme: growDevTheme(),
-      home: Modal(
-        flag: true,
-        text: 'Você tem certeza que quer cancelar este agendamento?',
-        buttonText: 'atualizar informações'.toUpperCase(),
-        hintText: 'E-mail',
-        hintText2: 'Telefone',
-        obscureText: false,
-        onPressed: () {},
-      ),
+      home: MyHomePage(),
     );
   }
 }
