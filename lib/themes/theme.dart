@@ -19,18 +19,57 @@ import 'package:flutter/material.dart';
 Color branco = Color.fromRGBO(225, 255, 255, 1);
 Color laranja = Color.fromRGBO(225, 110, 14, 1);
 Color cinza = Color.fromRGBO(153, 156, 157, 1);
-Color brancoGelo = Color.fromRGBO(245, 247, 246, 1);
+Color brancoGelo = Color.fromRGBO(248, 248, 248, 1);
 Color cinzaEscuro = Color.fromRGBO(102, 106, 107, 1);
 Color azul = Color.fromRGBO(30, 57, 93, 1);
 
 ThemeData growDevTheme() {
   return ThemeData(
-      primaryColor: azul,
-      splashColor: cinza,
-      accentColor: laranja,
-      cardColor: brancoGelo,
-      buttonColor: laranja,
-      iconTheme: IconThemeData(
-        color: cinzaEscuro,
-      ));
+    primaryColor: azul,
+    splashColor: cinza,
+    backgroundColor: brancoGelo,
+    accentColor: branco,
+    buttonColor: laranja,
+    iconTheme: IconThemeData(
+      color: cinzaEscuro,
+    ),
+    textTheme: TextTheme(
+      bodyText1: new TextStyle(
+        fontFamily: "Poppins",
+      ),
+      bodyText2: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      button: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      caption: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      headline1: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      headline2: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      headline3: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      headline4: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      overline: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      subtitle1: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      subtitle2: TextStyle(
+        fontFamily: "Poppins",
+      ),
+      headline6: TextStyle(
+        fontFamily: "Poppins",
+      ),
+    ),
+  );
 }

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
 import 'package:gd_reservas/themes/theme.dart';
-
-import 'package:splashscreen/splashscreen.dart';
-import 'layouts/pages/login.page.dart';
 import 'layouts/widgets/fade_animation.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
-import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
 bool ativo = false;
+
+// comentario de teste
 
 void main() {
   runApp(MyApp());
@@ -41,15 +39,12 @@ class MyApp extends StatelessWidget {
       },
       title: 'Growdev Reservas',
       theme: growDevTheme(),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: AulasAgendadas(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -59,11 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        SplashScreen(
-          seconds: 6,
-          navigateAfterSeconds: LoginPage(title: 'Reservas GrowDev'),
-          loaderColor: Colors.transparent,
-        ),
+        // Splash(
+        //   seconds: 6,
+        //   navigateAfterSeconds: LoginPage(title: 'Reservas GrowDev'),
+        //   loaderColor: Colors.transparent,
+        // ),
         Center(
           child: FadeAnimation(
             2.0,
