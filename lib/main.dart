@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
-import 'package:gd_reservas/layouts/widgets/modal_cancelar.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
-import 'layouts/pages/login.page.dart';
 import 'layouts/widgets/fade_animation.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
-import 'layouts/widgets/modal_cancelar.widget.dart';
-import 'layouts/widgets/modal_form.dart';
-import 'utils/lang/localizacoes.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
 bool ativo = false;
