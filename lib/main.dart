@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
 
         return supportedLocales.first;
       },
-      title: 'Flutter Demo',
+      title: 'GD Reservas App Quentuxo',
       theme: growDevTheme(),
       home: AulasAgendadas(),
     );
