@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
         return supportedLocales.first;
       },
-      title: 'Flutter Demo',
+      title: 'Growdev Reservas',
       theme: growDevTheme(),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
