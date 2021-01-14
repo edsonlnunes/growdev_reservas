@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
 import 'package:gd_reservas/layouts/widgets/modal_cancelar.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
-import 'package:splashscreen/splashscreen.dart';
 import 'layouts/pages/login.page.dart';
 import 'layouts/widgets/fade_animation.dart';
 import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       },
       title: 'Flutter Demo',
       theme: growDevTheme(),
-      home: MyHomePage(),
+      home: AulasAgendadas(),
     );
   }
 }
@@ -58,11 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        SplashScreen(
-          seconds: 6,
-          navigateAfterSeconds: LoginPage(title: 'Reservas GrowDev'),
-          loaderColor: Colors.transparent,
-        ),
+        // Splash(
+        //   seconds: 6,
+        //   navigateAfterSeconds: LoginPage(title: 'Reservas GrowDev'),
+        //   loaderColor: Colors.transparent,
+        // ),
         Center(
           child: FadeAnimation(
             2.0,
