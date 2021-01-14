@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                      "assets/img/Png/logo_transparente_laranja.png"),
+                      "assets/img/png/logo_transparente_laranja.png"),
                   fit: BoxFit.contain,
                 ),
               ),
