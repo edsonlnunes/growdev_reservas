@@ -7,6 +7,8 @@ import 'utils/lang/determinar_localizacao.dart';
 
 bool ativo = false;
 
+// comentario de teste
+
 void main() {
   runApp(MyApp());
 }
