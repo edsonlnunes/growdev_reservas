@@ -14,3 +14,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+Sempre que foi criar uma feature deve atualizar a branch local develop (pull de develop)
+
+Sempre que for finalizar uma feature, vá para a branch develop e atualize ela (pull de develop), dps volte para a feature, faz um merge de develop para a feature e finalize ela.
