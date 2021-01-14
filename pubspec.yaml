@@ -49,8 +49,8 @@ flutter:
   assets:
     - assets/lang/pt.json
     - assets/lang/en.json
-    - assets/img/Png/
-    - assets/img/Svg/
+    - assets/img/png/
+    - assets/img/svg/
     # - assets/img/Png/add-1.png
     # - assets/img/Png/add-24px.png
     # - assets/img/Png/create-24px.png
