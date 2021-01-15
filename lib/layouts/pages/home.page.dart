@@ -4,7 +4,6 @@ import 'package:gd_reservas/layouts/widgets/componente_login.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 
-GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
 class HomePage extends StatefulWidget {
 
   @override
@@ -12,7 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
+  GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
+  // var flip = () => cardKey.currentState.toggleCard();
   @override
   Widget build(BuildContext context) {
     ThemeData theme = growDevTheme();
@@ -22,9 +22,8 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           width: double.infinity,
           child: Column(
-            
             children: [
-              Image.asset("assets/img/png/logo_transparente_laranja.png"),
+              Image.asset("assets/img/Png/logo_transparente_laranja.png"),
               Text(
                 "Agendamento \nde aulas",
                 textAlign: TextAlign.center,
@@ -38,8 +37,13 @@ class _HomePageState extends State<HomePage> {
               FlipCard(
                 key: cardKey,
                 flipOnTouch: false,
-                front: ComponenteLogin(),
-                back: ComponenteCriarConta(),
+                front: ComponenteLogin(
+                  paraCadastro: () => cardKey.currentState.toggleCard(), 
+                  entrar: (){},
+                ),
+                back: ComponenteCriarConta(
+                  paraLogin: () => cardKey.currentState.toggleCard(), 
+                  cadastrar: (){},),
               )
             ],
           ),
