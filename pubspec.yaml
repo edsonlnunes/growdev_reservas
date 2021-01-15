@@ -50,7 +50,7 @@ flutter:
     - assets/lang/pt.json
     - assets/lang/en.json
     - assets/img/png/
-    - assets/img/svg/    
+    - assets/img/svg/
     - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
