@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
-import 'package:gd_reservas/themes/theme.dart';
-import 'layouts/widgets/fade_animation.dart';
+import 'layouts/pages/aulas_agendadas.page.dart';
+import 'themes/theme.dart';
+import 'layouts/pages/login.page.dart';
 import 'utils/lang/determinar_localizacao.dart';
-
-bool ativo = false;
-
-// comentario alterado
 
 void main() {
   runApp(MyApp());
@@ -52,30 +48,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        // Splash(
-        //   seconds: 6,
-        //   navigateAfterSeconds: LoginPage(title: 'Reservas GrowDev'),
-        //   loaderColor: Colors.transparent,
-        // ),
-        Center(
-          child: FadeAnimation(
-            2.0,
-            Container(
-              width: 200,
-              height: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      "assets/img/png/logo_transparente_laranja.png"),
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
+    return LoginPage(title: 'Reservas GrowDev');
   }
 }
