@@ -22,7 +22,7 @@ class Modal extends StatelessWidget {
     return AlertDialog(
       contentPadding: EdgeInsets.fromLTRB(25, 10, 25, 20),
       content: Container(
-        height: MediaQuery.of(context).size.height * 0.30,
+        height: MediaQuery.of(context).size.height * 0.35,
         width: MediaQuery.of(context).size.width * 0.90,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,7 +34,7 @@ class Modal extends StatelessWidget {
                   child: InkWell(
                     child: Icon(
                       Icons.close,
-                      color: Theme.of(context).accentColor,
+                      color: Theme.of(context).buttonColor,
                     ),
                     onTap: () {
                       Navigator.of(context).pop();
@@ -88,7 +88,7 @@ class Modal extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).buttonColor,
                 padding: EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),

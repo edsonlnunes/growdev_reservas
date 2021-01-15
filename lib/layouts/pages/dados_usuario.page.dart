@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
+import 'package:gd_reservas/layouts/widgets/modal_form.dart';
 import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 
 class DadosUsuarioPage extends StatelessWidget {
@@ -92,7 +93,23 @@ class DadosUsuarioPage extends StatelessWidget {
                           size: 32,
                           color: Color(0xffe16e0e),
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Modal(
+                                buttonText: 'ATUALIZAR SENHA',
+                                hintText: 'Senha atual*',
+                                hintText2: 'Nova senha*',
+                                obscureText: true,
+                                flag: true,
+                                onPressed: () {
+                                  // TODO: função de atualizar senha
+                                },
+                              );
+                            },
+                          );
+                        },
                       )
                     ],
                   )
