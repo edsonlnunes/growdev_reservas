@@ -7,7 +7,7 @@ import 'utils/lang/determinar_localizacao.dart';
 
 bool ativo = false;
 
-// comentario de teste
+// comentario alterado
 
 void main() {
   runApp(MyApp());
