@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/layouts/pages/home.page.dart';
 
 class ComponenteCriarConta extends StatelessWidget {
   final Function noToqueParaLogin;
@@ -98,7 +99,9 @@ class ComponenteCriarConta extends StatelessWidget {
             'Já possui uma conta?',
             style: TextStyle(fontSize: tamanho.height * 2.2 / 100),
           ),
-          onTap: noToqueParaLogin,
+          onTap: (){
+            cardKey.currentState.toggleCard();
+          },
         ),
       ],
     );
