@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
 
         return supportedLocales.first;
       },
-      title: 'GD Reservas App Quentuxo',
+      title: 'Growdev Reservas',
       theme: growDevTheme(),
       home: AulasAgendadas(),
     );
