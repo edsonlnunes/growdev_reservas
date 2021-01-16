@@ -16,23 +16,25 @@ import 'package:flutter/material.dart';
 //   },
 // );
 
-Color branco = Color.fromRGBO(225, 255, 255, 1);
-Color laranja = Color.fromRGBO(225, 110, 14, 1);
-Color cinza = Color.fromRGBO(153, 156, 157, 1);
-Color brancoGelo = Color.fromRGBO(248, 248, 248, 1);
-Color cinzaEscuro = Color.fromRGBO(102, 106, 107, 1);
-Color azul = Color.fromRGBO(30, 57, 93, 1);
+Color kColorGDLaranja = Color.fromRGBO(225, 110, 14, 1);
+Color kColorGDCinza = Color.fromRGBO(153, 156, 157, 1);
+Color kColorGDCinzaEscro = Color.fromRGBO(102, 106, 107, 1);
+
+Color kGDButtonColor = Color.fromRGBO(225, 110, 14, 1);
+Color kGDBackgroundColor = Color.fromRGBO(248, 248, 248, 1);
+Color kGDAccentColor = Color.fromRGBO(225, 255, 255, 1);
+Color kGDprimaryColor = Color.fromRGBO(30, 57, 93, 1);
 
 ThemeData growDevTheme() {
   return ThemeData(
-    primaryColor: azul,
-    splashColor: cinza,
-    backgroundColor: brancoGelo,
-    accentColor: branco,
-    buttonColor: laranja,
-    iconTheme: IconThemeData(
-      color: cinzaEscuro,
-    ),
+    primaryColor: kGDprimaryColor,
+    backgroundColor: kGDBackgroundColor,
+    scaffoldBackgroundColor: kGDBackgroundColor,
+    accentColor: kGDAccentColor,
+    buttonColor: kGDButtonColor,
+    // iconTheme: IconThemeData(
+    //   color: cinzaEscuro,
+    // ),
     textTheme: TextTheme(
       bodyText1: new TextStyle(
         fontFamily: "Poppins",

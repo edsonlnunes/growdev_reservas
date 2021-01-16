@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'layouts/pages/aulas_agendadas.page.dart';
+import 'package:gd_reservas/layouts/pages/acesso.page.dart';
+import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
+import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
+import 'package:gd_reservas/layouts/pages/dados_usuario.page.dart';
+import 'package:gd_reservas/utils/lang/localizacoes.dart';
 import 'themes/theme.dart';
-import 'layouts/pages/login.page.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -33,21 +34,9 @@ class MyApp extends StatelessWidget {
 
         return supportedLocales.first;
       },
-      title: 'Growdev Reservas',
+      onGenerateTitle: (ctx) => Localizacoes.of(ctx).traduzir('TITULO_APP'),
       theme: growDevTheme(),
-      home: AulasAgendadas(),
+      home: AcessoPage(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return LoginPage(title: 'Reservas GrowDev');
   }
 }

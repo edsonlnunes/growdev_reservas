@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/themes/theme.dart';
+import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
-class ComponenteCriarConta extends StatelessWidget {
-  final Function paraLogin;
-  final Function cadastrar;
+class LoginWidget extends StatelessWidget {
+  final Function paraCadastro;
+  final Function entrar;
 
-  const ComponenteCriarConta({Key key, this.paraLogin, this.cadastrar}) : super(key: key);
+  const LoginWidget({
+    Key key,
+    this.paraCadastro,
+    this.entrar,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = growDevTheme();
     final tamanho = MediaQuery.of(context).size;
 
     return Center(
@@ -25,7 +28,7 @@ class ComponenteCriarConta extends StatelessWidget {
                 horizontal: tamanho.width * 5 / 100,
                 vertical: tamanho.height * 4 / 100),
             decoration: BoxDecoration(
-              color: theme.primaryColor,
+              color: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(tamanho.height * 2 / 100),
             ),
             child: Column(
@@ -39,21 +42,9 @@ class ComponenteCriarConta extends StatelessWidget {
                           isDense: true,
                           contentPadding:
                               EdgeInsets.all(tamanho.height * 1.7 / 100),
-                          hintText: 'Nome completo*',
+                          hintText: Localizacoes.of(context)
+                              .traduzir('USUARIO_OBRIGATORIO'),
                           fillColor: Colors.white,
-                          filled: true,
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      SizedBox(height: tamanho.height * 2.9 / 100),
-                      TextField(
-                        style: TextStyle(fontSize: tamanho.height * 2.2 / 100),
-                        decoration: InputDecoration(
-                          isDense: true,
-                          contentPadding:
-                              EdgeInsets.all(tamanho.height * 1.7 / 100),
-                          hintText: 'Usuário*',
-                          fillColor: theme.cardColor,
                           filled: true,
                           border: InputBorder.none,
                         ),
@@ -66,8 +57,9 @@ class ComponenteCriarConta extends StatelessWidget {
                           isDense: true,
                           contentPadding:
                               EdgeInsets.all(tamanho.height * 1.7 / 100),
-                          hintText: 'Senha*',
-                          fillColor: theme.cardColor,
+                          hintText: Localizacoes.of(context)
+                              .traduzir('SENHA_OBRIGATORIO'),
+                          fillColor: Colors.white,
                           filled: true,
                           border: InputBorder.none,
                         ),
@@ -83,13 +75,13 @@ class ComponenteCriarConta extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Text(
-                      'CADASTRE-SE',
+                      Localizacoes.of(context).traduzir('ENTRAR').toUpperCase(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: tamanho.height * 2.2 / 100,
                       ),
                     ),
-                    onPressed: cadastrar,
+                    onPressed: entrar,
                   ),
                 ),
               ],
@@ -98,10 +90,10 @@ class ComponenteCriarConta extends StatelessWidget {
           SizedBox(height: tamanho.height * 3 / 100),
           GestureDetector(
             child: Text(
-              'Já possui uma conta?',
+              Localizacoes.of(context).traduzir('SEM_CONTA'),
               style: TextStyle(fontSize: tamanho.height * 2.2 / 100),
             ),
-            onTap: paraLogin,
+            onTap: paraCadastro,
           ),
         ],
       ),

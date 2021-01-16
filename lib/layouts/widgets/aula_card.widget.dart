@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/models/aula.dart';
+import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class AulaCardWidget extends StatelessWidget {
   final Aula aula;
@@ -34,7 +35,7 @@ class AulaCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Quando?',
+                      Localizacoes.of(context).traduzir('QUANDO'),
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
@@ -53,7 +54,7 @@ class AulaCardWidget extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      'Hora',
+                      Localizacoes.of(context).traduzir('HORA'),
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
@@ -103,7 +104,7 @@ class AulaCardWidget extends StatelessWidget {
                         ),
                         aula.vagas != null
                             ? Text(
-                                'Vagas restantes: ${aula.vagas}',
+                                '${Localizacoes.of(context).traduzir('VAGAS_RESTANTES')}: ${aula.vagas}',
                                 style: TextStyle(
                                     fontSize: 16,
                                     color: Color(0xff707070),
