@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -11,39 +12,47 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).primaryColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Image.asset('assets/icons/logo.png'),
-                SizedBox(width: 15),
-                Text(
-                  'Aulas da Growdev',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+    return SizedBox.expand(
+      child: Container(
+        color: Theme.of(context).primaryColor,
+        padding: const EdgeInsets.only(
+          left: 20,
+          right: 20,
+        ),
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset(
+                'assets/icons/logo.png',
+              ),
+              Text(
+                Localizacoes.of(context).traduzir('AULAS_GROWDEV'),
+                style: Theme.of(context).textTheme.headline6.copyWith(
+                      color: Theme.of(context).accentColor,
+                    ),
+              ),
+              Material(
+                color: Colors.transparent,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: InkWell(
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(50),
+                    child: Icon(
+                      Icons.exit_to_app,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ],
-            ),
-            backgroundColor: Theme.of(context).primaryColor,
-            actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.exit_to_app,
-                  color: Colors.white,
-                ),
-                onPressed: () {},
               )
             ],
           ),
-        ],
+        ),
       ),
     );
   }

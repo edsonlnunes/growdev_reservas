@@ -29,6 +29,7 @@ class Localizacoes {
   }
 
   String traduzir(String key) {
-    return this._frases[key];
+    final traducao = this._frases[key];
+    return traducao != null ? traducao : '***SEM_TRADUCAO***';
   }
 }
