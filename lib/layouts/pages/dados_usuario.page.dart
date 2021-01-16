@@ -85,7 +85,7 @@ class DadosUsuarioPage extends StatelessWidget {
                           icon: Icon(
                             Icons.edit,
                             size: 32,
-                            color: Color(0xffe16e0e),
+                            color: kColorGDLaranja,
                           ),
                           onPressed: () => atualizarDados(context),
                         ),
@@ -94,7 +94,7 @@ class DadosUsuarioPage extends StatelessWidget {
                           icon: Icon(
                             Icons.lock,
                             size: 32,
-                            color: Color(0xffe16e0e),
+                            color: kColorGDLaranja,
                           ),
                           onPressed: () => atualizarSenha(context),
                         )
@@ -114,7 +114,7 @@ class DadosUsuarioPage extends StatelessWidget {
     showDialog(
       context: ctx,
       builder: (BuildContext context) {
-        return ModalFormlarioWidget(
+        return ModalFormularioWidget(
           textoBotao: Localizacoes.of(context).traduzir('ATUALIZAR_SENHA'),
           textFields: [
             TextFormField(
@@ -144,7 +144,7 @@ class DadosUsuarioPage extends StatelessWidget {
     showDialog(
       context: ctx,
       builder: (BuildContext context) {
-        return ModalFormlarioWidget(
+        return ModalFormularioWidget(
           textoBotao:
               Localizacoes.of(context).traduzir('ATUALIZAR_INFORMACOES'),
           textFields: [

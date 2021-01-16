@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ModalFormlarioWidget extends StatelessWidget {
+class ModalFormularioWidget extends StatelessWidget {
   final String textoBotao;
   final void Function() callback;
   final List<TextFormField> textFields;
 
-  ModalFormlarioWidget({
+  ModalFormularioWidget({
     @required this.textoBotao,
     @required this.textFields,
     @required this.callback,

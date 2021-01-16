@@ -91,7 +91,10 @@ class LoginWidget extends StatelessWidget {
           GestureDetector(
             child: Text(
               Localizacoes.of(context).traduzir('SEM_CONTA'),
-              style: TextStyle(fontSize: tamanho.height * 2.2 / 100),
+              style: TextStyle(
+                fontSize: tamanho.height * 2.2 / 100,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
             onTap: paraCadastro,
           ),

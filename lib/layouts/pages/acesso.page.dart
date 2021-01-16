@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
+import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
@@ -11,6 +11,7 @@ class AcessoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: EdgeInsets.only(top: 40),
         child: Container(
@@ -39,7 +40,8 @@ class AcessoPage extends StatelessWidget {
                   paraCadastro: () => cardKey.currentState.toggleCard(),
                   entrar: () {
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (_) => AulasAgendadasPage()),
+                        MaterialPageRoute(
+                            builder: (_) => AulasDisponiveisPage()),
                         (route) => false);
                   },
                 ),
