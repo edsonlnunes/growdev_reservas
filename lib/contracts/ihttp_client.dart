@@ -1,15 +1,15 @@
 abstract class IHttpClient {
-  Future<void> get(
-    String endpoint, {
+  Future<dynamic> get(
+    String url, {
     Map<String, dynamic> headers,
   });
-  Future<void> post(
-    String endpoint,
+  Future<dynamic> post(
+    String url,
     dynamic data, {
     Map<String, dynamic> headers,
   });
-  Future<void> put(
-    String endpoint, {
+  Future<dynamic> put(
+    String url, {
     Map<String, dynamic> headers,
   });
 }
