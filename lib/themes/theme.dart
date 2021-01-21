@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
 
-// MaterialColor laranja = MaterialColor(
-//   Color.fromRGBO(225, 115, 37, 1).value,
-//   {
-//     50: Color.fromRGBO(225, 115, 37, .1),
-//     100: Color.fromRGBO(225, 115, 37, .2),
-//     200: Color.fromRGBO(225, 115, 37, .3),
-//     300: Color.fromRGBO(225, 115, 37, .4),
-//     400: Color.fromRGBO(225, 115, 37, .5),
-//     500: Color.fromRGBO(225, 115, 37, .6),
-//     600: Color.fromRGBO(225, 115, 37, .7),
-//     700: Color.fromRGBO(225, 115, 37, .8),
-//     800: Color.fromRGBO(225, 115, 37, .9),
-//     900: Color.fromRGBO(225, 115, 37, 1),
-//   },
-// );
-
 Color kColorGDLaranja = Color.fromRGBO(225, 110, 14, 1);
 Color kColorGDCinza = Color.fromRGBO(153, 156, 157, 1);
 Color kColorGDCinzaEscro = Color.fromRGBO(102, 106, 107, 1);
@@ -25,6 +9,14 @@ Color kGDBackgroundColor = Color.fromRGBO(248, 248, 248, 1);
 Color kGDAccentColor = Color.fromRGBO(225, 255, 255, 1);
 Color kGDprimaryColor = Color.fromRGBO(30, 57, 93, 1);
 
+Color kGDselectedColor = Color(0xFF4AC8EA);
+Color kGDdrawerBackgroundColor = Color(0xFF272D34);
+
+TextStyle listTitleDefaultTextStyle = TextStyle(
+    color: Colors.white70, fontSize: 20.0, fontWeight: FontWeight.w600);
+TextStyle listTitleSelectedTextStyle =
+    TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600);
+
 ThemeData growDevTheme() {
   return ThemeData(
     primaryColor: kGDprimaryColor,
@@ -32,6 +24,7 @@ ThemeData growDevTheme() {
     scaffoldBackgroundColor: kGDBackgroundColor,
     accentColor: kGDAccentColor,
     buttonColor: kGDButtonColor,
+
     // iconTheme: IconThemeData(
     //   color: cinzaEscuro,
     // ),
