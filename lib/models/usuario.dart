@@ -15,4 +15,7 @@ class Usuario {
 
   Map<String, dynamic> toJson() =>
       {"name": name, "password": password, "type": type, "username": username};
+
+  Map<String, dynamic> toJsonLogin() =>
+      {"username": username, "password": password};
 }

@@ -1,14 +1,16 @@
+import 'package:gd_reservas/models/resposta_http.dart';
+
 abstract class IHttpClient {
-  Future<dynamic> get(
+  Future<RespostaHttp> get(
     String url, {
     String token,
   });
-  Future<dynamic> post(
+  Future<RespostaHttp> post(
     String url,
     dynamic data, {
     String token,
   });
-  Future<dynamic> put(
+  Future<RespostaHttp> put(
     String url, {
     String token,
   });
