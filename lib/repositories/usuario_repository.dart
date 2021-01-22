@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:gd_reservas/models/resposta_http.dart';
-import '../contracts/ihttp_client_repository.dart';
+import '../contracts/http_client.contract.dart';
 import '../contracts/usuario_repository.contract.dart';
 
 class UsuarioRepository implements IUsuarioRepository {
