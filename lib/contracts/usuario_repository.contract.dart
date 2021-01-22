@@ -1,10 +1,6 @@
+import 'package:dio/dio.dart';
+import 'package:gd_reservas/models/usuario.dart';
+
 abstract class IUsuarioRepository {
-  Future<void> criarConta(
-    String name,
-    String password,
-    String type,
-    String username,
-    String endpoint,
-    Map<String, dynamic> headers,
-  );
+  Future<Response> criarConta(Usuario usuario);
 }
