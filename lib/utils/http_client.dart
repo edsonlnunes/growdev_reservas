@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:gd_reservas/contracts/ihttp_client.dart';
+import 'package:gd_reservas/contracts/ihttp_client_repository.dart';
 
 class HttpClient implements IHttpClient {
   Dio _dio;
