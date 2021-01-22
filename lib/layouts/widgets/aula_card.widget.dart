@@ -86,7 +86,7 @@ class AulaCardWidget extends StatelessWidget {
                         RichText(
                           text: TextSpan(
                             text:
-                                '$statusLabel: ${aula.vagas == null ? '\n' : ''}',
+                                '$statusLabel ${aula.vagas == null ? '\n' : ''}',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color(0xff707070),

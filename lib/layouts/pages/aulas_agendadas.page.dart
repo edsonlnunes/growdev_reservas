@@ -8,9 +8,9 @@ import 'package:gd_reservas/utils/lang/localizacoes.dart';
 class AulasAgendadasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(),
-      body: Column(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
+      child: Column(
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.09,
@@ -38,7 +38,7 @@ class AulasAgendadasPage extends StatelessWidget {
                         hora: '18:30',
                         status: 'meu status:'),
                     callback: () => confirmarCancelamento(context),
-                    statusLabel: 'Status da aula: aguardando',
+                    statusLabel: 'Status da aula:\n aguardando',
                     iconData: Icons.delete);
               },
             ),

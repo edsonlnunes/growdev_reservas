@@ -8,10 +8,9 @@ import 'package:gd_reservas/utils/lang/localizacoes.dart';
 class DadosUsuarioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfff8f8f8),
-      appBar: CustomAppBar(),
-      body: SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Color kColorGDLaranja = Color.fromRGBO(225, 110, 14, 1);
 Color kColorGDCinza = Color.fromRGBO(153, 156, 157, 1);
-Color kColorGDCinzaEscro = Color.fromRGBO(102, 106, 107, 1);
+Color kColorGDCinzaEscuro = Color.fromRGBO(102, 106, 107, 1);
 
 Color kGDButtonColor = Color.fromRGBO(225, 110, 14, 1);
 Color kGDBackgroundColor = Color.fromRGBO(248, 248, 248, 1);
@@ -10,12 +10,11 @@ Color kGDAccentColor = Color.fromRGBO(225, 255, 255, 1);
 Color kGDprimaryColor = Color.fromRGBO(30, 57, 93, 1);
 
 Color kGDselectedColor = Color(0xFF4AC8EA);
-Color kGDdrawerBackgroundColor = Color(0xFF272D34);
 
 TextStyle listTitleDefaultTextStyle = TextStyle(
-    color: Colors.white70, fontSize: 20.0, fontWeight: FontWeight.w600);
-TextStyle listTitleSelectedTextStyle =
-    TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600);
+    color: kColorGDCinzaEscuro, fontSize: 14.0, fontWeight: FontWeight.w600);
+TextStyle listTitleSelectedTextStyle = TextStyle(
+    color: kGDprimaryColor, fontSize: 14.0, fontWeight: FontWeight.w600);
 
 ThemeData growDevTheme() {
   return ThemeData(
@@ -24,10 +23,6 @@ ThemeData growDevTheme() {
     scaffoldBackgroundColor: kGDBackgroundColor,
     accentColor: kGDAccentColor,
     buttonColor: kGDButtonColor,
-
-    // iconTheme: IconThemeData(
-    //   color: cinzaEscuro,
-    // ),
     textTheme: TextTheme(
       bodyText1: new TextStyle(
         fontFamily: "Poppins",
