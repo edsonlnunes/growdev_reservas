@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:gd_reservas/contracts/autenticacao_repository.contract.dart';
 import 'package:gd_reservas/contracts/http_client.contract.dart';
 import 'package:gd_reservas/models/resposta_http.dart';
@@ -8,8 +10,16 @@ class AutenticacaoRepository implements IAutenticacaoRepository {
   AutenticacaoRepository(this._httpClient);
 
   @override
-  Future<RespostaHttp> login(Usuario usuario) async {
-    var response = await _httpClient.post('/login', usuario.toJsonLogin());
-    return response;
+  Future<Usuario> login(Usuario usuario) async {
+    var response =
+        await _httpClient.post('/login', jsonEncode(usuario.toJsonLogin()));
+
+    if (response.statusCode == 400 && response.error['success'] == false) {
+      throw 'Usuário ou senha inválidos';
+    } else if (response.error != null) {
+      throw response.error;
+    }
+
+    return Usuario.fromJsonLogin(response.data);
   }
 }
