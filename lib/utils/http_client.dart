@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:gd_reservas/contracts/http_client.contract.dart';
 import 'package:gd_reservas/models/resposta_http.dart';
@@ -35,11 +37,12 @@ class HttpClient implements IHttpClient {
   }
 
   @override
-  Future<RespostaHttp> post(String url, data, {String token}) async {
+  Future<RespostaHttp> post(String url, Map<String, dynamic> data,
+      {String token}) async {
     try {
       var resposta = await _dio.post(
         url,
-        data: data,
+        data: jsonEncode(data),
         options: Options(
           headers: {'Authorization': 'Bearer $token'},
         ),
@@ -57,10 +60,12 @@ class HttpClient implements IHttpClient {
   }
 
   @override
-  Future<RespostaHttp> put(String url, {String token}) async {
+  Future<RespostaHttp> put(String url, Map<String, dynamic> data,
+      {String token}) async {
     try {
       var resposta = await _dio.put(
         url,
+        data: jsonEncode(data),
         options: Options(
           headers: {'Authorization': 'Bearer $token'},
         ),
