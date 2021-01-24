@@ -1,6 +1,7 @@
 class RespostaHttp {
   int statusCode;
-  String data;
+  Map<String, dynamic> data;
+  dynamic error;
 
-  RespostaHttp(this.statusCode, this.data);
+  RespostaHttp({this.statusCode, this.data, this.error});
 }

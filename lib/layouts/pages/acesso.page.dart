@@ -38,7 +38,7 @@ class AcessoPage extends StatelessWidget {
                 flipOnTouch: false,
                 front: LoginWidget(
                   paraCadastro: () => cardKey.currentState.toggleCard(),
-                  entrar: () {
+                  entrar: (_, __) {
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(
                             builder: (_) => AulasDisponiveisPage()),

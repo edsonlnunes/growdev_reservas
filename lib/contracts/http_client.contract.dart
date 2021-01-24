@@ -7,11 +7,12 @@ abstract class IHttpClient {
   });
   Future<RespostaHttp> post(
     String url,
-    dynamic data, {
+    Map<String, dynamic> data, {
     String token,
   });
   Future<RespostaHttp> put(
-    String url, {
+    String url,
+    Map<String, dynamic> data, {
     String token,
   });
 }

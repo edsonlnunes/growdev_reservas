@@ -3,7 +3,7 @@ import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class LoginWidget extends StatelessWidget {
   final Function paraCadastro;
-  final Function entrar;
+  final Function(String username, String password) entrar;
 
   const LoginWidget({
     Key key,
@@ -13,6 +13,8 @@ class LoginWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var usernameController = TextEditingController();
+    var passwordController = TextEditingController();
     final tamanho = MediaQuery.of(context).size;
 
     return Center(
@@ -37,6 +39,7 @@ class LoginWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       TextField(
+                        controller: usernameController,
                         style: TextStyle(fontSize: tamanho.height * 2.2 / 100),
                         decoration: InputDecoration(
                           isDense: true,
@@ -51,6 +54,7 @@ class LoginWidget extends StatelessWidget {
                       ),
                       SizedBox(height: tamanho.height * 2.9 / 100),
                       TextField(
+                        controller: passwordController,
                         obscureText: true,
                         style: TextStyle(fontSize: tamanho.height * 2.2 / 100),
                         decoration: InputDecoration(
@@ -81,7 +85,12 @@ class LoginWidget extends StatelessWidget {
                         fontSize: tamanho.height * 2.2 / 100,
                       ),
                     ),
-                    onPressed: entrar,
+                    onPressed: () {
+                      entrar(
+                        usernameController.text,
+                        passwordController.text,
+                      );
+                    },
                   ),
                 ),
               ],

@@ -11,7 +11,7 @@ class UsuarioRepository implements IUsuarioRepository {
   @override
   Future<RespostaHttp> criarConta(usuario) async {
     var url = '/users';
-    var response = await httpClient.post(url, json.encode(usuario));
+    var response = await httpClient.post(url, usuario.toJson());
     return response;
   }
 }
