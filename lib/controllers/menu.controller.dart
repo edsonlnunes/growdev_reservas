@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MenuController {
-  ValueNotifier<int> menuSelecionado = ValueNotifier<int>(0);
+  ValueNotifier<int> menuSelecionado = ValueNotifier<int>(1);
 
   void alterarMenu(int menu) {
     menuSelecionado.value = menu;

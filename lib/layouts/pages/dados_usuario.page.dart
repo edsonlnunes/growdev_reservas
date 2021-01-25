@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
+import 'package:gd_reservas/layouts/widgets/cabecalho_pagina.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_formulario.widget.dart';
 import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
@@ -14,19 +14,7 @@ class DadosUsuarioPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.09,
-              width: double.infinity,
-              color: Colors.white,
-              child: Center(
-                child: Text(
-                  Localizacoes.of(context).traduzir('DADOS_USUARIO'),
-                  style: Theme.of(context).textTheme.headline6.copyWith(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                ),
-              ),
-            ),
+            CabecalhoPagina('DADOS_USUARIO'),
             Card(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               elevation: 2,

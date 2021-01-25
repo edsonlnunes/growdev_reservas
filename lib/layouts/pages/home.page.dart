@@ -3,12 +3,10 @@ import 'package:gd_reservas/controllers/menu.controller.dart';
 import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
 import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'package:gd_reservas/layouts/pages/dados_usuario.page.dart';
-import 'package:gd_reservas/layouts/widgets/collapsing_navigation_drawer.widget.dart';
+import 'package:gd_reservas/layouts/widgets/menu_navegacao.widget.dart';
 import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
-import 'package:gd_reservas/models/menu_item.dart';
+import 'package:gd_reservas/utils/tela.dart';
 import 'package:provider/provider.dart';
-
-int currentSelectedIndex = 0;
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<MenuController>(context);
+
     return Scaffold(
       appBar: CustomAppBar(),
       body: Stack(
@@ -29,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               return getTela(menuSelecionado);
             },
           ),
-          CollapsingNavigationDrawer(),
+          MenuNavegacao(),
         ],
       ),
     );

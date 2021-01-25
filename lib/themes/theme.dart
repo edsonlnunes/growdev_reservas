@@ -9,13 +9,6 @@ Color kGDBackgroundColor = Color.fromRGBO(248, 248, 248, 1);
 Color kGDAccentColor = Color.fromRGBO(225, 255, 255, 1);
 Color kGDprimaryColor = Color.fromRGBO(30, 57, 93, 1);
 
-Color kGDselectedColor = Color(0xFF4AC8EA);
-
-TextStyle listTitleDefaultTextStyle = TextStyle(
-    color: kColorGDCinzaEscuro, fontSize: 14.0, fontWeight: FontWeight.w600);
-TextStyle listTitleSelectedTextStyle = TextStyle(
-    color: kGDprimaryColor, fontSize: 14.0, fontWeight: FontWeight.w600);
-
 ThemeData growDevTheme() {
   return ThemeData(
     primaryColor: kGDprimaryColor,

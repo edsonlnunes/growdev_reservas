@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gd_reservas/controllers/menu.controller.dart';
-import 'package:gd_reservas/layouts/pages/acesso.page.dart';
-import 'package:gd_reservas/layouts/pages/aulas_agendadas.page.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
-import 'package:gd_reservas/layouts/pages/dados_usuario.page.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 import 'package:provider/provider.dart';
 import 'layouts/pages/home.page.dart';

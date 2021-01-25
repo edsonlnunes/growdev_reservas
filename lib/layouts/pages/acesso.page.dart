@@ -5,11 +5,13 @@ import 'package:gd_reservas/layouts/widgets/login.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
+import 'package:gd_reservas/utils/tela.dart';
 
 class AcessoPage extends StatelessWidget {
   final cardKey = GlobalKey<FlipCardState>();
   @override
   Widget build(BuildContext context) {
+    Tela(MediaQuery.of(context).size);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(

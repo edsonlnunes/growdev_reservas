@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/controllers/menu.controller.dart';
-import 'package:gd_reservas/layouts/pages/home.page.dart';
-import 'package:gd_reservas/layouts/widgets/collapsing_list_tile.widget.dart';
+import 'package:gd_reservas/layouts/widgets/menu_navegacao_item.widget.dart';
 import 'package:gd_reservas/models/menu_item.dart';
 import 'package:gd_reservas/themes/theme.dart';
+import 'package:gd_reservas/utils/tela.dart';
 import 'package:provider/provider.dart';
 
-class CollapsingNavigationDrawer extends StatefulWidget {
+class MenuNavegacao extends StatefulWidget {
   @override
-  CollapsingNavigationDrawerState createState() {
-    return new CollapsingNavigationDrawerState();
+  MenuNavegacaoState createState() {
+    return new MenuNavegacaoState();
   }
 }
 
-class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer>
+class MenuNavegacaoState extends State<MenuNavegacao>
     with SingleTickerProviderStateMixin {
-  double maxWidth = 210;
-  double minWidth = 70;
-  bool isCollapsed = false;
+  double maxWidth = Tela.getLargura() * .55;
+  double minWidth = Tela.getLargura() * .18;
+  bool menuRecolhido = true;
+  Size screen;
   AnimationController _animationController;
   Animation<double> widthAnimation;
 
   @override
   void initState() {
     super.initState();
+
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    widthAnimation = Tween<double>(begin: maxWidth, end: minWidth)
+
+    widthAnimation = Tween<double>(begin: minWidth, end: maxWidth)
         .animate(_animationController);
   }
 
@@ -39,7 +42,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer>
     );
   }
 
-  Widget getWidget(context, widget, MenuController menuController) {
+  Widget getWidget(context, Widget widget, MenuController menuController) {
     return Material(
       elevation: 80.0,
       child: Container(
@@ -52,35 +55,36 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer>
             ),
             Expanded(
               child: ListView.separated(
-                separatorBuilder: (context, counter) {
+                itemCount: menuItens.length,
+                separatorBuilder: (context, index) {
                   return Divider(
                     height: 5.0,
                     color: kColorGDCinza,
                   );
                 },
-                itemBuilder: (context, counter) {
-                  return CollapsingListTile(
+                itemBuilder: (context, index) {
+                  return MenuNavegacaoItem(
+                    selecionado: menuController.menuSelecionado.value == index,
+                    menuItem: menuItens[index],
+                    fechado: menuRecolhido,
+                    minWidth: minWidth,
+                    maxWidth: maxWidth,
+                    animationController: _animationController,
                     onTap: () {
                       setState(() {
-                        if (!isCollapsed) {
-                          currentSelectedIndex = counter;
-                          menuController.alterarMenu(currentSelectedIndex);
+                        if (!menuRecolhido) {
+                          menuController.alterarMenu(index);
                         }
 
-                        isCollapsed = !isCollapsed;
+                        menuRecolhido = !menuRecolhido;
 
-                        isCollapsed
-                            ? _animationController.forward()
-                            : _animationController.reverse();
+                        menuRecolhido
+                            ? _animationController.reverse()
+                            : _animationController.forward();
                       });
                     },
-                    isSelected: currentSelectedIndex == counter,
-                    title: menuItens[counter].titulo,
-                    icon: menuItens[counter].icone,
-                    animationController: _animationController,
                   );
                 },
-                itemCount: menuItens.length,
               ),
             ),
           ],
