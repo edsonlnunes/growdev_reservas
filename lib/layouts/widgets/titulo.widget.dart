@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/themes/theme.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
-class Titulo extends StatelessWidget {
-  String titulo;
+class TituloWidget extends StatelessWidget {
+  final String titulo;
 
-  Titulo(this.titulo);
+  TituloWidget(this.titulo);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class Titulo extends StatelessWidget {
     return Container(
       height: size.height * 0.09,
       width: double.infinity,
-      color: Theme.of(context).accentColor,
+      color: kColorGDBackgroundWidgets,
       child: Center(
         child: Text(
           Localizacoes.of(context).traduzir(titulo),

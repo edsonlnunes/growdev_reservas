@@ -12,7 +12,7 @@ class AulasAgendadasPage extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
       child: Column(
         children: [
-          Titulo('AULAS_AGENDADAS'),
+          TituloWidget('AULAS_AGENDADAS'),
           SizedBox(
             height: 15,
           ),

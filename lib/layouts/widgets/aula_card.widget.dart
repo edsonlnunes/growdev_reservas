@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/models/aula.dart';
+import 'package:gd_reservas/themes/theme.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class AulaCardWidget extends StatelessWidget {
@@ -25,6 +26,7 @@ class AulaCardWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),
         ),
+        color: kColorGDBackgroundWidgets,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: IntrinsicHeight(

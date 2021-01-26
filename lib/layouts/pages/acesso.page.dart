@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/factories/controller_factory.dart';
+import 'package:gd_reservas/factories/controller.factory.dart';
 import 'package:gd_reservas/layouts/pages/home.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';

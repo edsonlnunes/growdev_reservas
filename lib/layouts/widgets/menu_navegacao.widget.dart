@@ -50,10 +50,10 @@ class MenuNavegacaoState extends State<MenuNavegacao>
 
   Widget getWidget(context, Widget widget, MenuController menuController) {
     return Material(
-      elevation: 80.0,
+      elevation: 10,
       child: Container(
         width: widthAnimation.value,
-        color: Theme.of(context).accentColor,
+        color: kColorGDBackgroundWidgets,
         child: Column(
           children: <Widget>[
             SizedBox(

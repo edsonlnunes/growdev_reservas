@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 class Usuario {
   String name;
   String password;
@@ -9,10 +7,10 @@ class Usuario {
   String token;
 
   Usuario({
-    @required this.name,
-    @required this.password,
-    @required this.type,
-    @required this.username,
+    this.name,
+    this.password,
+    this.type,
+    this.username,
     this.token,
     this.growdever,
   });

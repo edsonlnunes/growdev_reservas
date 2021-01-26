@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/factories/controller_factory.dart';
+import 'package:gd_reservas/factories/controller.factory.dart';
 import 'package:gd_reservas/layouts/widgets/circular_progress_indicator_button.widget.dart';
 import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/themes/theme.dart';
@@ -15,8 +15,9 @@ class CriarContaWidget extends StatefulWidget {
 }
 
 class _CriarContaWidgetState extends State<CriarContaWidget> {
-  Usuario usuario =
-      Usuario(name: '', password: '', type: 'Growdever', username: '');
+  Usuario usuario = Usuario(
+    type: 'Growdever',
+  );
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
 

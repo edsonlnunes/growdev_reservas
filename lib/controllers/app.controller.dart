@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/blocs/autenticacao.bloc.dart';
-import 'package:gd_reservas/blocs/usuario_bloc.dart';
+import 'package:gd_reservas/blocs/usuario.bloc.dart';
 import 'package:gd_reservas/layouts/pages/acesso.page.dart';
 import 'package:gd_reservas/models/usuario.dart';
 
 class AppController {
   final UsuarioBloc usuarioBloc;
   final AutenticacaoBloc autenticacaoBloc;
+
+  final ValueNotifier<bool> processandoAutenticacao =
+      ValueNotifier<bool>(false);
 
   AppController(this.usuarioBloc, this.autenticacaoBloc);
 
@@ -53,12 +56,8 @@ class AppController {
 
   void proximaTela(BuildContext context) {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => AcessoPage()),
-        (route) => false);
+        MaterialPageRoute(builder: (_) => AcessoPage()), (route) => false);
   }
-
-  final ValueNotifier<bool> processandoAutenticacao =
-      ValueNotifier<bool>(false);
 
   Future<bool> autenticacao(Usuario usuario) async {
     processandoAutenticacao.value = true;

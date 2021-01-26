@@ -29,7 +29,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               Text(
                 Localizacoes.of(context).traduzir('AULAS_GROWDEV'),
                 style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: Theme.of(context).accentColor,
+                      color: Colors.white,
                     ),
               ),
               Material(

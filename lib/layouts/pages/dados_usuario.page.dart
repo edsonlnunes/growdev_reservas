@@ -14,7 +14,7 @@ class DadosUsuarioPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Titulo('DADOS_USUARIO'),
+            TituloWidget('DADOS_USUARIO'),
             Card(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               elevation: 2,

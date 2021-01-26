@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 Color kColorGDLaranja = Color.fromRGBO(225, 110, 14, 1);
 Color kColorGDCinza = Color.fromRGBO(153, 156, 157, 1);
 Color kColorGDCinzaEscuro = Color.fromRGBO(102, 106, 107, 1);
+Color kColorGDBackgroundWidgets = Colors.white;
 
 Color kGDButtonColor = Color.fromRGBO(225, 110, 14, 1);
 Color kGDBackgroundColor = Color.fromRGBO(248, 248, 248, 1);
@@ -16,6 +17,8 @@ ThemeData growDevTheme() {
     scaffoldBackgroundColor: kGDBackgroundColor,
     accentColor: kGDAccentColor,
     buttonColor: kGDButtonColor,
+    splashColor: Colors.transparent,
+    highlightColor: Colors.transparent,
     textTheme: TextTheme(
       bodyText1: new TextStyle(
         fontFamily: "Poppins",
