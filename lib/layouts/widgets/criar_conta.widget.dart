@@ -145,7 +145,6 @@ class _CriarContaWidgetState extends State<CriarContaWidget> {
                               ),
                             )
                           : CircularProgressIndicatorButtonWidget(),
-                      // onPressed: () async {
                       onPressed: () async {
                         setState(() {
                           loading = true;
@@ -155,10 +154,14 @@ class _CriarContaWidgetState extends State<CriarContaWidget> {
                               SnackBar(content: Text('Campo(s) inválido(s)')));
                         } else {
                           _formKey.currentState.save();
-                          print(usuario);
-                          await appController.criarConta(context, usuario);
-                          // appController.proximaTela(context);
+                          var criou =
+                              await appController.criarConta(context, usuario);
+                          if (criou) {
+                            Future.delayed(Duration(seconds: 1),
+                                () => appController.proximaTela(context));
+                          }
                         }
+                        print('setstate');
                         setState(() {
                           loading = false;
                         });
