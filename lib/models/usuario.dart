@@ -1,11 +1,11 @@
 import 'package:meta/meta.dart';
 
 class Usuario {
-  final String name;
-  final String password;
-  final String type;
-  final String username;
-  final String growdever;
+  String name;
+  String password;
+  String type;
+  String username;
+  String growdever;
   String token;
 
   Usuario({

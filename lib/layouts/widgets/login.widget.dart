@@ -24,7 +24,7 @@ class LoginWidget extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width * 3 / 5,
             height: tamanho.height *
-                (8.8 * MediaQuery.of(context).textScaleFactor + 35) /
+                (8.8 * MediaQuery.of(context).textScaleFactor + 40) /
                 100,
             padding: EdgeInsets.symmetric(
                 horizontal: tamanho.width * 5 / 100,

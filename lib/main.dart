@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'layouts/pages/acesso.page.dart';
 import 'themes/theme.dart';
 import 'utils/lang/determinar_localizacao.dart';
+import 'utils/lang/localizacoes.dart';
 
 void main() => runApp(MyApp());
 

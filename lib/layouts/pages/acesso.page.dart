@@ -46,9 +46,6 @@ class AcessoPage extends StatelessWidget {
                 ),
                 back: CriarContaWidget(
                   paraLogin: () => cardKey.currentState.toggleCard(),
-                  cadastrar: () {
-                    cardKey.currentState.toggleCard();
-                  },
                 ),
               )
             ],
