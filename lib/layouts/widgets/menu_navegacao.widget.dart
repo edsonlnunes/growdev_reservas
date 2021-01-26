@@ -3,7 +3,6 @@ import 'package:gd_reservas/controllers/menu.controller.dart';
 import 'package:gd_reservas/layouts/widgets/menu_navegacao_item.widget.dart';
 import 'package:gd_reservas/models/menu_item.dart';
 import 'package:gd_reservas/themes/theme.dart';
-import 'package:gd_reservas/utils/tela.dart';
 import 'package:provider/provider.dart';
 
 class MenuNavegacao extends StatefulWidget {
@@ -15,12 +14,22 @@ class MenuNavegacao extends StatefulWidget {
 
 class MenuNavegacaoState extends State<MenuNavegacao>
     with SingleTickerProviderStateMixin {
-  double maxWidth = Tela.getLargura() * .55;
-  double minWidth = Tela.getLargura() * .18;
+  double maxWidth;
+  double minWidth;
   bool menuRecolhido = true;
   Size screen;
   AnimationController _animationController;
   Animation<double> widthAnimation;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    maxWidth = MediaQuery.of(context).size.width * .55;
+    minWidth = MediaQuery.of(context).size.width * .18;
+    widthAnimation = Tween<double>(begin: minWidth, end: maxWidth)
+        .animate(_animationController);
+  }
 
   @override
   void initState() {
@@ -28,9 +37,6 @@ class MenuNavegacaoState extends State<MenuNavegacao>
 
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-
-    widthAnimation = Tween<double>(begin: minWidth, end: maxWidth)
-        .animate(_animationController);
   }
 
   @override
@@ -47,7 +53,7 @@ class MenuNavegacaoState extends State<MenuNavegacao>
       elevation: 80.0,
       child: Container(
         width: widthAnimation.value,
-        color: kGDBackgroundColor,
+        color: Theme.of(context).accentColor,
         child: Column(
           children: <Widget>[
             SizedBox(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gd_reservas/models/menu_item.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
-import 'package:gd_reservas/utils/tela.dart';
 
 class MenuNavegacaoItem extends StatefulWidget {
   final MenuItem menuItem;
@@ -49,6 +48,7 @@ class _MenuNavegacaoItemState extends State<MenuNavegacaoItem> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: widget.onTap,
       child: Container(
@@ -57,17 +57,17 @@ class _MenuNavegacaoItemState extends State<MenuNavegacaoItem> {
         child: Row(
           children: [
             Container(
-              width: Tela.getLargura() * .18,
-              height: Tela.getAltura() * .05,
+              width: size.width * .18,
+              height: size.height * .05,
               child: Center(
                 child: Image.asset(
                   widget.selecionado ? menu.iconeSelecionado : menu.icone,
                   fit: BoxFit.contain,
-                  width: Tela.getLargura() * .085,
+                  width: size.width * .085,
                 ),
               ),
             ),
-            if (widthAnimation.value >= (Tela.getLargura() * .4))
+            if (widthAnimation.value >= (size.width * .4))
               Text(
                 Localizacoes.of(context).traduzir(menu.titulo),
                 style: widget.selecionado

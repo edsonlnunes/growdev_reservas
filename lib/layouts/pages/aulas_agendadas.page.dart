@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/layouts/widgets/aula_card.widget.dart';
-import 'package:gd_reservas/layouts/widgets/cabecalho_pagina.widget.dart';
+import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_simples.widget.dart';
 import 'package:gd_reservas/models/aula.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
@@ -12,7 +12,7 @@ class AulasAgendadasPage extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
       child: Column(
         children: [
-          CabecalhoPagina('AULAS_AGENDADAS'),
+          Titulo('AULAS_AGENDADAS'),
           SizedBox(
             height: 15,
           ),

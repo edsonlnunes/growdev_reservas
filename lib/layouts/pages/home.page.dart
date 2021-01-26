@@ -5,7 +5,6 @@ import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'package:gd_reservas/layouts/pages/dados_usuario.page.dart';
 import 'package:gd_reservas/layouts/widgets/menu_navegacao.widget.dart';
 import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
-import 'package:gd_reservas/utils/tela.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
+import 'package:gd_reservas/layouts/pages/home.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
-import 'package:gd_reservas/utils/tela.dart';
 
 class AcessoPage extends StatelessWidget {
   final cardKey = GlobalKey<FlipCardState>();
   @override
   Widget build(BuildContext context) {
-    Tela(MediaQuery.of(context).size);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -42,8 +40,7 @@ class AcessoPage extends StatelessWidget {
                   paraCadastro: () => cardKey.currentState.toggleCard(),
                   entrar: (_, __) {
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (_) => AulasDisponiveisPage()),
+                        MaterialPageRoute(builder: (_) => HomePage()),
                         (route) => false);
                   },
                 ),

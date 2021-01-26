@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:gd_reservas/controllers/menu.controller.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 import 'package:provider/provider.dart';
-import 'layouts/pages/home.page.dart';
+import 'layouts/pages/acesso.page.dart';
 import 'themes/theme.dart';
 import 'utils/lang/determinar_localizacao.dart';
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
             onGenerateTitle: (ctx) =>
                 Localizacoes.of(ctx).traduzir('TITULO_APP'),
             theme: growDevTheme(),
-            home: HomePage(),
+            home: AcessoPage(),
           );
         });
   }

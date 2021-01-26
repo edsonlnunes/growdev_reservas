@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/widgets/cabecalho_pagina.widget.dart';
+import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_formulario.widget.dart';
 import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
@@ -14,7 +14,7 @@ class DadosUsuarioPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CabecalhoPagina('DADOS_USUARIO'),
+            Titulo('DADOS_USUARIO'),
             Card(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               elevation: 2,
