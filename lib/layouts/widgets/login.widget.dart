@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/factories/controller.factory.dart';
+import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
-class LoginWidget extends StatelessWidget {
+class LoginWidget extends StatefulWidget {
   final Function paraCadastro;
   final Function(String username, String password) entrar;
 
@@ -12,9 +14,15 @@ class LoginWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _LoginWidgetState createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  @override
   Widget build(BuildContext context) {
     var usernameController = TextEditingController();
     var passwordController = TextEditingController();
+    var appController = ControllerFactory.appController();
     final tamanho = MediaQuery.of(context).size;
 
     return Center(
@@ -73,28 +81,41 @@ class LoginWidget extends StatelessWidget {
                 ),
                 Container(
                   width: double.infinity,
-                  child: RaisedButton(
-                    padding: EdgeInsets.all(tamanho.height * 1.7 / 100),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: ValueListenableBuilder(
-                      builder: (context, value, child) {
-                        return Text(
-                          Localizacoes.of(context)
-                              .traduzir('ENTRAR')
-                              .toUpperCase(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: tamanho.height * 2.2 / 100,
-                          ),
-                        );
-                      },
-                    ),
-                    onPressed: () {
-                      entrar(
-                        usernameController.text,
-                        passwordController.text,
+                  child: ValueListenableBuilder(
+                    valueListenable: appController.processandoAutenticacao,
+                    builder: (BuildContext context, bool value, Widget child) {
+                      return RaisedButton(
+                        padding: EdgeInsets.all(tamanho.height * 1.7 / 100),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: value
+                            ? CircularProgressIndicator(
+                                strokeWidth: 1,
+                              )
+                            : Text(
+                                Localizacoes.of(context)
+                                    .traduzir('ENTRAR')
+                                    .toUpperCase(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: tamanho.height * 2.2 / 100,
+                                ),
+                              ),
+                        onPressed: () {
+                          // widget.entrar(
+                          //   usernameController.text,
+                          //   passwordController.text,
+                          // );
+                          appController.autenticacao(
+                            Usuario(
+                              name: null,
+                              password: passwordController.text,
+                              type: null,
+                              username: usernameController.text,
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
@@ -111,7 +132,7 @@ class LoginWidget extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
               ),
             ),
-            onTap: paraCadastro,
+            onTap: widget.paraCadastro,
           ),
         ],
       ),
