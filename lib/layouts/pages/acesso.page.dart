@@ -23,9 +23,9 @@ class AcessoPage extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
-              // Image.asset(
-              //   "assets/img/png/logo_transparente_laranja.png",
-              // ),
+              Image.asset(
+                "assets/img/png/logo_transparente_laranja.png",
+              ),
               Text(
                 Localizacoes.of(context).traduzir('TITULO_APP_LOGIN'),
                 textAlign: TextAlign.center,
