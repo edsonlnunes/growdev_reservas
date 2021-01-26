@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/factories/controller.factory.dart';
-import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class LoginWidget extends StatefulWidget {
   final Function paraCadastro;
   final Function(String username, String password) entrar;
+  final ValueNotifier<bool> processandoAutenticacao;
 
   const LoginWidget({
     Key key,
     this.paraCadastro,
     this.entrar,
+    this.processandoAutenticacao,
   }) : super(key: key);
 
   @override
@@ -82,7 +83,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Container(
                   width: double.infinity,
                   child: ValueListenableBuilder(
-                    valueListenable: appController.processandoAutenticacao,
+                    valueListenable: widget.processandoAutenticacao,
                     builder: (BuildContext context, bool value, Widget child) {
                       return RaisedButton(
                         padding: EdgeInsets.all(tamanho.height * 1.7 / 100),
@@ -103,17 +104,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               ),
                         onPressed: () {
-                          // widget.entrar(
-                          //   usernameController.text,
-                          //   passwordController.text,
-                          // );
-                          appController.autenticacao(
-                            Usuario(
-                              name: null,
-                              password: passwordController.text,
-                              type: null,
-                              username: usernameController.text,
-                            ),
+                          widget.entrar(
+                            usernameController.text,
+                            passwordController.text,
                           );
                         },
                       );

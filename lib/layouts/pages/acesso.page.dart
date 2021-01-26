@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/factories/controller.factory.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
 import 'package:gd_reservas/models/usuario.dart';
@@ -41,6 +40,8 @@ class AcessoPage extends StatelessWidget {
                 key: cardKey,
                 flipOnTouch: false,
                 front: LoginWidget(
+                  processandoAutenticacao:
+                      appController.processandoAutenticacao,
                   paraCadastro: () => cardKey.currentState.toggleCard(),
                   entrar: (username, password) {
                     var usuario = Usuario(
