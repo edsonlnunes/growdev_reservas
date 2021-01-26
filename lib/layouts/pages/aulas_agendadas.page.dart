@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/layouts/widgets/aula_card.widget.dart';
-import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
+import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_simples.widget.dart';
 import 'package:gd_reservas/models/aula.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
@@ -8,23 +8,11 @@ import 'package:gd_reservas/utils/lang/localizacoes.dart';
 class AulasAgendadasPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(),
-      body: Column(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
+      child: Column(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.09,
-            width: double.infinity,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                Localizacoes.of(context).traduzir('AULAS_AGENDADAS'),
-                style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: Theme.of(context).primaryColor,
-                    ),
-              ),
-            ),
-          ),
+          Titulo('AULAS_AGENDADAS'),
           SizedBox(
             height: 15,
           ),
@@ -38,7 +26,7 @@ class AulasAgendadasPage extends StatelessWidget {
                         hora: '18:30',
                         status: 'meu status:'),
                     callback: () => confirmarCancelamento(context),
-                    statusLabel: 'Status da aula: aguardando',
+                    statusLabel: 'Status da aula:\n aguardando',
                     iconData: Icons.delete);
               },
             ),
@@ -54,7 +42,7 @@ class AulasAgendadasPage extends StatelessWidget {
       barrierDismissible: false,
       builder: (context) => ModalSimplesWidget(
         descricao:
-            Localizacoes.of(context).traduzir('CONFIRMACAO_CANCELSAMENTO_AULA'),
+            Localizacoes.of(context).traduzir('CONFIRMACAO_CANCELAMENTO_AULA'),
         textobotao:
             Localizacoes.of(context).traduzir('CONFIRMAR').toUpperCase(),
         callback: () {

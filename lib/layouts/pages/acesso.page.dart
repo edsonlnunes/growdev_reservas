@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
+import 'package:gd_reservas/layouts/pages/home.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
@@ -40,8 +40,7 @@ class AcessoPage extends StatelessWidget {
                   paraCadastro: () => cardKey.currentState.toggleCard(),
                   entrar: (_, __) {
                     Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (_) => AulasDisponiveisPage()),
+                        MaterialPageRoute(builder: (_) => HomePage()),
                         (route) => false);
                   },
                 ),

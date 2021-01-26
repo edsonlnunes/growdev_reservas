@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/widgets/custom_appbar.widget.dart';
+import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_simples.widget.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 import '../../models/aula.dart';
@@ -8,24 +8,11 @@ import '../widgets/aula_card.widget.dart';
 class AulasDisponiveisPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfff8f8f8),
-      appBar: CustomAppBar(),
-      body: Column(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
+      child: Column(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.09,
-            width: double.infinity,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                Localizacoes.of(context).traduzir('AULAS_DISPONIVEIS'),
-                style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: Theme.of(context).primaryColor,
-                    ),
-              ),
-            ),
-          ),
+          Titulo('AULAS_DISPONIVEIS'),
           SizedBox(
             height: 15,
           ),
