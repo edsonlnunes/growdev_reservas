@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/blocs/autenticacao.bloc.dart';
 import 'package:gd_reservas/blocs/usuario_bloc.dart';
-import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
+import 'package:gd_reservas/layouts/pages/acesso.page.dart';
 import 'package:gd_reservas/models/usuario.dart';
 
 class AppController {
@@ -53,7 +53,7 @@ class AppController {
 
   void proximaTela(BuildContext context) {
     Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (_) => AulasDisponiveisPage()),
+        MaterialPageRoute(builder: (_) => AcessoPage()),
         (route) => false);
   }
 
