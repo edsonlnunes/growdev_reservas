@@ -25,23 +25,33 @@ class AppController {
     }
   }
 
-  Future<void> criarConta(BuildContext context, Usuario usuario) async {
+  Future<bool> criarConta(BuildContext context, Usuario usuario) async {
     try {
       var response = await usuarioBloc.usuarioRepository.criarConta(usuario);
-      Scaffold.of(context).showSnackBar(SnackBar(
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
           content: response.statusCode == 200
-              ? Text(response.data['message'])
-              : Text('Falha na criação')));
-      print(response.statusCode);
-      print(response.data);
+              ? (Text(response.data['message']))
+              : Text(
+                  response.error['message'],
+                ),
+        ),
+      );
+      return response.statusCode == 200 ? true : false;
     } catch (e) {
-      print(e);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Ocorreu um erro no servidor! Tente novamente mais tarde'),
+        ),
+      );
+      return false;
     }
   }
 
-  // void proximaTela(BuildContext context) {
-  //   Navigator.of(context).pushAndRemoveUntil(
-  //       MaterialPageRoute(builder: (_) => AulasDisponiveisPage()),
-  //       (route) => false);
-  // }
+  void proximaTela(BuildContext context) {
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => AulasDisponiveisPage()),
+        (route) => false);
+  }
 }
