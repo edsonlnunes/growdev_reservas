@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/factories/controller_factory.dart';
+import 'package:gd_reservas/layouts/pages/home.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
 import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
-
-import 'aulas_disponiveis.page.dart';
 
 class AcessoPage extends StatelessWidget {
   final cardKey = GlobalKey<FlipCardState>();
@@ -56,10 +55,10 @@ class AcessoPage extends StatelessWidget {
                         if (autenticado) {
                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
-                                  builder: (_) => AulasDisponiveisPage()),
+                                  builder: (_) => HomePage()),
                               (route) => false);
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
+                          Scaffold.of(context).showSnackBar(
                             SnackBar(
                               content: Text('Senha ou usuario inválido'),
                             ),
