@@ -7,6 +7,8 @@ import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
+import 'aulas_disponiveis.page.dart';
+
 class AcessoPage extends StatelessWidget {
   final cardKey = GlobalKey<FlipCardState>();
 
@@ -48,13 +50,23 @@ class AcessoPage extends StatelessWidget {
                         name: null,
                         password: password,
                         type: null,
-                        username: password);
-                    appController.autenticacao(usuario);
-
-                    // Navigator.of(context).pushAndRemoveUntil(
-                    //     MaterialPageRoute(
-                    //         builder: (_) => AulasDisponiveisPage()),
-                    //     (route) => false);
+                        username: username);
+                    appController.autenticacao(usuario).then(
+                      (autenticado) {
+                        if (autenticado) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => AulasDisponiveisPage()),
+                              (route) => false);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Senha ou usuario inválido'),
+                            ),
+                          );
+                        }
+                      },
+                    );
                   },
                 ),
                 back: CriarContaWidget(

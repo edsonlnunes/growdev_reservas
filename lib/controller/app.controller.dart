@@ -11,12 +11,8 @@ class AppController {
 
   Future<bool> autenticacao(Usuario usuario) async {
     processandoAutenticacao.value = true;
-    print('processandoAutenticacao - ${processandoAutenticacao.value}');
     var autenticado = await autenticacaoBloc.login(usuario);
-    await Future.delayed(Duration(seconds: 2));
     processandoAutenticacao.value = false;
-    print('processandoAutenticacao - ${processandoAutenticacao.value}');
-    print('autenticado - $autenticado');
     return autenticado;
   }
 }

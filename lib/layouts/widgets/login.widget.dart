@@ -23,7 +23,6 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     var usernameController = TextEditingController();
     var passwordController = TextEditingController();
-    var appController = ControllerFactory.appController();
     final tamanho = MediaQuery.of(context).size;
 
     return Center(

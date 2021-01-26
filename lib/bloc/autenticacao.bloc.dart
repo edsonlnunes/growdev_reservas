@@ -12,6 +12,7 @@ class AutenticacaoBloc {
       //salvar no banco
       return true;
     } catch (e) {
+      print(e);
       return false;
     }
   }
