@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/layouts/pages/home.page.dart';
+import 'package:gd_reservas/factories/controller_factory.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
+import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
+import 'aulas_disponiveis.page.dart';
+
 class AcessoPage extends StatelessWidget {
   final cardKey = GlobalKey<FlipCardState>();
+
   @override
   Widget build(BuildContext context) {
+    var appController = ControllerFactory.appController();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -37,11 +42,31 @@ class AcessoPage extends StatelessWidget {
                 key: cardKey,
                 flipOnTouch: false,
                 front: LoginWidget(
+                  processandoAutenticacao:
+                      appController.processandoAutenticacao,
                   paraCadastro: () => cardKey.currentState.toggleCard(),
-                  entrar: (_, __) {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (_) => HomePage()),
-                        (route) => false);
+                  entrar: (username, password) {
+                    var usuario = Usuario(
+                        name: null,
+                        password: password,
+                        type: null,
+                        username: username);
+                    appController.autenticacao(usuario).then(
+                      (autenticado) {
+                        if (autenticado) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => AulasDisponiveisPage()),
+                              (route) => false);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Senha ou usuario inválido'),
+                            ),
+                          );
+                        }
+                      },
+                    );
                   },
                 ),
                 back: CriarContaWidget(

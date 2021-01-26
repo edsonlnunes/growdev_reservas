@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/blocs/autenticacao.bloc.dart';
 import 'package:gd_reservas/blocs/usuario_bloc.dart';
 import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'package:gd_reservas/models/usuario.dart';
 
 class AppController {
   final UsuarioBloc usuarioBloc;
+  final AutenticacaoBloc autenticacaoBloc;
 
-  AppController(this.usuarioBloc);
+  AppController(this.usuarioBloc, this.autenticacaoBloc);
 
   String validarDados(String valor, String type) {
     switch (type) {
@@ -53,5 +55,15 @@ class AppController {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => AulasDisponiveisPage()),
         (route) => false);
+  }
+
+  final ValueNotifier<bool> processandoAutenticacao =
+      ValueNotifier<bool>(false);
+
+  Future<bool> autenticacao(Usuario usuario) async {
+    processandoAutenticacao.value = true;
+    var autenticado = await autenticacaoBloc.login(usuario);
+    processandoAutenticacao.value = false;
+    return autenticado;
   }
 }
