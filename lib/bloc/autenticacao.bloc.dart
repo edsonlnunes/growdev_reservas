@@ -6,7 +6,13 @@ class AutenticacaoBloc {
 
   AutenticacaoBloc(this.iAutenticacaoRepository);
 
-  login(Usuario usuario) async {
-    var resposta = await iAutenticacaoRepository.login(usuario);
+  Future<bool> login(Usuario usuario) async {
+    try {
+      var usuarioAutenticado = await iAutenticacaoRepository.login(usuario);
+      //salvar no banco
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

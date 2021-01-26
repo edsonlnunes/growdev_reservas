@@ -78,12 +78,18 @@ class LoginWidget extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Text(
-                      Localizacoes.of(context).traduzir('ENTRAR').toUpperCase(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: tamanho.height * 2.2 / 100,
-                      ),
+                    child: ValueListenableBuilder(
+                      builder: (context, value, child) {
+                        return Text(
+                          Localizacoes.of(context)
+                              .traduzir('ENTRAR')
+                              .toUpperCase(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: tamanho.height * 2.2 / 100,
+                          ),
+                        );
+                      },
                     ),
                     onPressed: () {
                       entrar(

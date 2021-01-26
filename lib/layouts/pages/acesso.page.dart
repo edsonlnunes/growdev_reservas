@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/factories/controller.factory.dart';
 import 'package:gd_reservas/layouts/pages/aulas_disponiveis.page.dart';
 import 'package:gd_reservas/layouts/widgets/criar_conta.widget.dart';
 import 'package:gd_reservas/layouts/widgets/login.widget.dart';
+import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class AcessoPage extends StatelessWidget {
   final cardKey = GlobalKey<FlipCardState>();
+
   @override
   Widget build(BuildContext context) {
+    var appController = ControllerFactory.appController();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -38,11 +42,18 @@ class AcessoPage extends StatelessWidget {
                 flipOnTouch: false,
                 front: LoginWidget(
                   paraCadastro: () => cardKey.currentState.toggleCard(),
-                  entrar: (_, __) {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(
-                            builder: (_) => AulasDisponiveisPage()),
-                        (route) => false);
+                  entrar: (username, password) {
+                    var usuario = Usuario(
+                        name: null,
+                        password: password,
+                        type: null,
+                        username: password);
+                    appController.autenticacao(usuario);
+
+                    // Navigator.of(context).pushAndRemoveUntil(
+                    //     MaterialPageRoute(
+                    //         builder: (_) => AulasDisponiveisPage()),
+                    //     (route) => false);
                   },
                 ),
                 back: CriarContaWidget(
