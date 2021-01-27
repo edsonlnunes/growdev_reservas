@@ -25,7 +25,7 @@ class MenuNavegacaoState extends State<MenuNavegacao>
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    maxWidth = MediaQuery.of(context).size.width * .55;
+    maxWidth = MediaQuery.of(context).size.width * .70;
     minWidth = MediaQuery.of(context).size.width * .18;
     widthAnimation = Tween<double>(begin: minWidth, end: maxWidth)
         .animate(_animationController);

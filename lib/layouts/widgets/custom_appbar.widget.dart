@@ -16,8 +16,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       child: Container(
         color: Theme.of(context).primaryColor,
         padding: const EdgeInsets.only(
-          left: 20,
-          right: 20,
+          left: 10,
+          right: 10,
         ),
         child: SafeArea(
           child: Row(
@@ -26,11 +26,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               Image.asset(
                 'assets/icons/logo.png',
               ),
-              Text(
-                Localizacoes.of(context).traduzir('AULAS_GROWDEV'),
-                style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: Colors.white,
-                    ),
+              Flexible(
+                child: FittedBox(
+                  child: Text(
+                    Localizacoes.of(context).traduzir('AULAS_GROWDEV'),
+                    style: Theme.of(context).textTheme.headline6.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
+                ),
               ),
               Material(
                 color: Colors.transparent,
