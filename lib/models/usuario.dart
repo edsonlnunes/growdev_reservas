@@ -26,7 +26,9 @@ class Usuario {
         password = '',
         type = json['user']['type'],
         username = json['user']['username'],
-        growdever = json['user']['growdever'],
+        growdever = (json['user']['growdever'] is Map)
+            ? json['user']['growdever']["uid"]
+            : json['user']['growdever'],
         token = json['token'];
 
   @override
