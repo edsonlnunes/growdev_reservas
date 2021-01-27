@@ -16,13 +16,14 @@ class ModalFormularioWidget extends StatelessWidget {
     return AlertDialog(
       contentPadding: EdgeInsets.fromLTRB(25, 10, 25, 20),
       content: Container(
-        height: MediaQuery.of(context).size.height * 0.35,
-        width: MediaQuery.of(context).size.width * 0.90,
+        width: double.maxFinite,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
+            Flexible(
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Align(
                     alignment: Alignment.centerRight,
@@ -40,8 +41,9 @@ class ModalFormularioWidget extends StatelessWidget {
                     height: 20,
                   ),
                   Form(
-                    child: Expanded(
+                    child: Flexible(
                       child: ListView.separated(
+                        shrinkWrap: true,
                         separatorBuilder: (_, __) => SizedBox(height: 20),
                         itemCount: textFields.length,
                         itemBuilder: (_, index) => textFields[index],
@@ -51,7 +53,7 @@ class ModalFormularioWidget extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
               child: RaisedButton(

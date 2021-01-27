@@ -17,8 +17,8 @@ class ModalSimplesWidget extends StatelessWidget {
     return AlertDialog(
       contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 20),
       content: Container(
-        height: MediaQuery.of(context).size.height * 0.25,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
@@ -48,6 +48,9 @@ class ModalSimplesWidget extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ],
+            ),
+            SizedBox(
+              height: 30,
             ),
             SizedBox(
               width: double.infinity,
