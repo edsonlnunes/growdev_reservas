@@ -26,5 +26,9 @@
     "EMAIL": "E-mail",
     "TELEFONE": "Phone number",
     "SENHA_ATUAL": "Current password*",
-    "NOVA_SENHA": "New password*"
+    "NOVA_SENHA": "New password*",
+    "SERVICO_INDISPONIVEL": "Service unavailable",
+    "ERRO_SERVIDOR": "Server error",
+    "AGENDAMENTO_SUCESSO": "Successful scheduling!",
+    "AGENDAMENTO_ERRO": "You're already enrolled in this class."
 }
