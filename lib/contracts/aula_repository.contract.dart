@@ -1,9 +1,9 @@
-import 'package:gd_reservas/models/resposta_http.dart';
+import '../models/aula.dart';
 
 abstract class  IAulaRepository {
 
-  Future<RespostaHttp> buscarAulasDisponiveis();
+  Future<List<Aula>> buscarAulasDisponiveis();
 
-  Future<RespostaHttp> inscricaoAula(String growdeverUid, String classUid);
+  Future<String> inscricaoAula(String growdeverUid, String classUid);
 
 }

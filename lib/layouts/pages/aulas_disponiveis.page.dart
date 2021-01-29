@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_simples.widget.dart';
+import 'package:gd_reservas/repositories/aula.repository.dart';
+import 'package:gd_reservas/utils/http_client.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 import '../../models/aula.dart';
 import '../widgets/aula_card.widget.dart';
 
-class AulasDisponiveisPage extends StatelessWidget {
+class AulasDisponiveisPage extends StatefulWidget {
+  @override
+  _AulasDisponiveisPageState createState() => _AulasDisponiveisPageState();
+}
+
+class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
+  AulaRepository repository =
+      AulaRepository(HttpClient('https://growdev-test-node.herokuapp.com/'));
+
   @override
   Widget build(BuildContext context) {
     return Padding(

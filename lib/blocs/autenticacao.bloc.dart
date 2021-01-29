@@ -1,5 +1,6 @@
 import 'package:gd_reservas/contracts/autenticacao_repository.contract.dart';
 import 'package:gd_reservas/models/usuario.dart';
+import 'package:gd_reservas/utils/global.dart';
 
 class AutenticacaoBloc {
   IAutenticacaoRepository iAutenticacaoRepository;
@@ -10,6 +11,7 @@ class AutenticacaoBloc {
     try {
       var usuarioAutenticado = await iAutenticacaoRepository.login(usuario);
       //salvar no banco
+      kUserToken = usuarioAutenticado.token;
       return true;
     } catch (e) {
       print(e);
