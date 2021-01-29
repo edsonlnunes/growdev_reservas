@@ -54,6 +54,57 @@ class AppController {
     }
   }
 
+  Future<bool> atualizarInformacoes(
+      BuildContext context, Usuario usuario) async {
+    try {
+      var response =
+          await usuarioBloc.usuarioRepository.atualizarInformacoes(usuario);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: response.statusCode == 200
+              ? (Text(response.data['message']))
+              : Text(
+                  response.error['message'],
+                ),
+        ),
+      );
+      return response.statusCode == 200 ? true : false;
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Ocorreu um erro no servidor! Tente novamente mais tarde'),
+        ),
+      );
+      return false;
+    }
+  }
+
+  Future<bool> atualizarSenha(BuildContext context, Usuario usuario) async {
+    try {
+      var response =
+          await usuarioBloc.usuarioRepository.atualizarSenha(usuario);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: response.statusCode == 200
+              ? (Text(response.data['message']))
+              : Text(
+                  response.error['message'],
+                ),
+        ),
+      );
+      return response.statusCode == 200 ? true : false;
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Ocorreu um erro no servidor! Tente novamente mais tarde'),
+        ),
+      );
+      return false;
+    }
+  }
+
   void proximaTela(BuildContext context) {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => AcessoPage()), (route) => false);

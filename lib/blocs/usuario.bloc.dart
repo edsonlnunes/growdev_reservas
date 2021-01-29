@@ -4,10 +4,18 @@ import 'package:gd_reservas/models/usuario.dart';
 
 class UsuarioBloc {
   final IUsuarioRepository usuarioRepository;
-  
+
   UsuarioBloc(this.usuarioRepository);
 
   Future<RespostaHttp> criarConta(Usuario usuario) async {
+    return usuarioRepository.criarConta(usuario);
+  }
+
+  Future<RespostaHttp> atualizarInformacoes(Usuario usuario) async {
+    return usuarioRepository.criarConta(usuario);
+  }
+
+  Future<RespostaHttp> atualizarSenha(Usuario usuario) async {
     return usuarioRepository.criarConta(usuario);
   }
 }

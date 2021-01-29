@@ -14,4 +14,18 @@ class UsuarioRepository implements IUsuarioRepository {
     var response = await httpClient.post(url, usuario.toJson());
     return response;
   }
+
+  @override
+  Future<RespostaHttp> atualizarInformacoes(Usuario usuario) async {
+    var url = '/users/${usuario.growdever.uid}';
+    var response = await httpClient.put(url, usuario.growdever.toJson());
+    return response;
+  }
+
+  @override
+  Future<RespostaHttp> atualizarSenha(Usuario usuario) async {
+    var url = '/users/${usuario.growdever.uid}';
+    var response = await httpClient.put(url, usuario.toJsonNovaSenha());
+    return response;
+  }
 }

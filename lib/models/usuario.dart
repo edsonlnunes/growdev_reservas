@@ -1,43 +1,48 @@
+import 'package:gd_reservas/models/growdever.dart';
+
 class Usuario {
-  String name;
-  String password;
-  String type;
-  String username;
-  String growdever;
+  String nome;
+  String senha;
+  String novaSenha;
+  String tipo;
+  String nomeUsuario;
   String token;
+  Growdever growdever;
 
   Usuario({
-    this.name,
-    this.password,
-    this.type,
-    this.username,
+    this.nome,
+    this.senha,
+    this.novaSenha,
+    this.tipo,
+    this.nomeUsuario,
     this.token,
     this.growdever,
   });
 
   Map<String, dynamic> toJson() =>
-      {"name": name, "password": password, "type": type, "username": username};
+      {"name": nome, "password": senha, "type": tipo, "username": nomeUsuario};
 
   Map<String, dynamic> toJsonLogin() =>
-      {"username": username, "password": password};
+      {"username": nomeUsuario, "password": senha};
+
+  Map<String, dynamic> toJsonNovaSenha() =>
+      {"username": nomeUsuario, "oldPassword": senha, "password": novaSenha};
 
   Usuario.fromJsonLogin(Map<String, dynamic> json)
-      : name = json['user']['name'],
-        password = '',
-        type = json['user']['type'],
-        username = json['user']['username'],
-        growdever = (json['user']['growdever'] is Map)
-            ? json['user']['growdever']["uid"]
-            : json['user']['growdever'],
-        token = json['token'];
+      : nome = json['user']['name'],
+        senha = '',
+        novaSenha = '',
+        tipo = json['user']['type'],
+        nomeUsuario = json['user']['username'],
+        growdever = Growdever.fromJson(json['user']['growdever']);
 
   @override
   String toString() {
     return '''
-nome: $name
-tipo: $type
-usuario: $username
-password: $password
+nome: $nome
+tipo: $tipo
+usuario: $nomeUsuario
+password: $senha
 growdever: $growdever
 token: $token 
 ''';

@@ -47,10 +47,10 @@ class AcessoPage extends StatelessWidget {
                     paraCadastro: () => cardKey.currentState.toggleCard(),
                     entrar: (username, password) {
                       var usuario = Usuario(
-                          name: null,
-                          password: password,
-                          type: null,
-                          username: username);
+                          nome: null,
+                          senha: password,
+                          tipo: null,
+                          nomeUsuario: username);
                       appController.autenticacao(usuario).then(
                         (autenticado) {
                           if (autenticado) {
