@@ -13,7 +13,7 @@ class AcessoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var appController = ControllerFactory.appController();
+    // var appController = ControllerFactory.appController();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -37,42 +37,43 @@ class AcessoPage extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Builder(
-                builder: (ctx) => FlipCard(
-                  key: cardKey,
-                  flipOnTouch: false,
-                  front: LoginWidget(
-                    processandoAutenticacao:
-                        appController.processandoAutenticacao,
-                    paraCadastro: () => cardKey.currentState.toggleCard(),
-                    entrar: (username, password) {
-                      var usuario = Usuario(
-                          name: null,
-                          password: password,
-                          type: null,
-                          username: username);
-                      appController.autenticacao(usuario).then(
-                        (autenticado) {
-                          if (autenticado) {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(builder: (_) => HomePage()),
-                                (route) => false);
-                          } else {
-                            Scaffold.of(ctx).showSnackBar(
-                              SnackBar(
-                                content: Text('Senha ou usuario inválido'),
-                              ),
-                            );
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  back: CriarContaWidget(
-                    paraLogin: () => cardKey.currentState.toggleCard(),
-                  ),
+              FlipCard(
+                key: cardKey,
+                flipOnTouch: false,
+                front: LoginWidget(
+                  paraCadastro: () => cardKey.currentState.toggleCard(),
                 ),
-              )
+                // front: LoginWidget(
+                //   processandoAutenticacao:
+                //       appController.processandoAutenticacao,
+                //   paraCadastro: () => cardKey.currentState.toggleCard(),
+                //   entrar: (username, password) {
+                //     var usuario = Usuario(
+                //         name: null,
+                //         password: password,
+                //         type: null,
+                //         username: username);
+                //     appController.autenticacao(usuario).then(
+                //       (autenticado) {
+                //         if (autenticado) {
+                //           Navigator.of(context).pushAndRemoveUntil(
+                //               MaterialPageRoute(builder: (_) => HomePage()),
+                //               (route) => false);
+                //         } else {
+                //           Scaffold.of(ctx).showSnackBar(
+                //             SnackBar(
+                //               content: Text('Senha ou usuario inválido'),
+                //             ),
+                //           );
+                //         }
+                //       },
+                //     );
+                //   },
+                // ),
+                back: CriarContaWidget(
+                  paraLogin: () => cardKey.currentState.toggleCard(),
+                ),
+              ),
             ],
           ),
         ),
