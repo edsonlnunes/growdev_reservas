@@ -47,4 +47,16 @@ class AulaRepository implements IAulaRepository {
       return 'ERRO_SERVIDOR';
     }
   }
+
+  @override
+  Future<List<Aula>> buscarAulasAgendadas() {
+    // TODO: implement buscarAulasAgendadas
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> cancelarAgendamento(String growdeverUid) {
+    // TODO: implement cancelarAgendamento
+    throw UnimplementedError();
+  }
 }
