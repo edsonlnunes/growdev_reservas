@@ -31,5 +31,6 @@
     "ERRO_SERVIDOR": "Server error",
     "AGENDAMENTO_SUCESSO": "Successful scheduling!",
     "AGENDAMENTO_ERRO": "You're already enrolled in this class.",
-    "FALHA_LOGIN": "Invalid password or username"
+    "FALHA_LOGIN": "Invalid password or username",
+    "NENHUM_ITEM": "No items found"
 }
