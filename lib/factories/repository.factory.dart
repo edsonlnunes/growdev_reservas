@@ -1,5 +1,7 @@
+import 'package:gd_reservas/contracts/aula_repository.contract.dart';
 import 'package:gd_reservas/contracts/autenticacao_repository.contract.dart';
 import 'package:gd_reservas/contracts/usuario_repository.contract.dart';
+import 'package:gd_reservas/repositories/aula.repository.dart';
 import 'package:gd_reservas/repositories/autenticacao.repository.dart';
 import 'package:gd_reservas/repositories/usuario.repository.dart';
 import 'package:gd_reservas/utils/http_client.dart';
@@ -15,5 +17,9 @@ class RepositoryFactory {
     return AutenticacaoRepository(
       HttpClient(urlbase),
     );
+  }
+
+  static IAulaRepository aulaRepository() {
+    return AulaRepository(HttpClient(urlbase));
   }
 }
