@@ -124,7 +124,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                         Scaffold.of(context).showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                                'Senha ou usuario inválido'),
+                                              Localizacoes.of(context)
+                                                  .traduzir('FALHA_LOGIN'),
+                                            ),
                                           ),
                                         );
                                       }

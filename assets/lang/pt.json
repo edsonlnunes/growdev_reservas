@@ -30,5 +30,6 @@
     "SERVICO_INDISPONIVEL": "Serviço indisponível",
     "ERRO_SERVIDOR": "Erro no servidor",
     "AGENDAMENTO_SUCESSO": "Agendamento realizado com sucesso!",
-    "AGENDAMENTO_ERRO": "Você já está agendado nesta aula."
+    "AGENDAMENTO_ERRO": "Você já está agendado nesta aula.",
+    "FALHA_LOGIN": "Senha ou usuário inválido"
 }
