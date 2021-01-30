@@ -7,14 +7,8 @@ import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class LoginWidget extends StatefulWidget {
   final Function paraCadastro;
-  // final Function(String username, String password) entrar;
-  // final ValueNotifier<bool> processandoAutenticacao;
 
-  const LoginWidget({Key key, this.paraCadastro
-      // this.entrar,
-      // this.processandoAutenticacao,
-      })
-      : super(key: key);
+  const LoginWidget({Key key, this.paraCadastro}) : super(key: key);
 
   @override
   _LoginWidgetState createState() => _LoginWidgetState();

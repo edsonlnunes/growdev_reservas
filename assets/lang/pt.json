@@ -31,5 +31,6 @@
     "ERRO_SERVIDOR": "Erro no servidor",
     "AGENDAMENTO_SUCESSO": "Agendamento realizado com sucesso!",
     "AGENDAMENTO_ERRO": "Você já está agendado nesta aula.",
-    "FALHA_LOGIN": "Senha ou usuário inválido"
+    "FALHA_LOGIN": "Senha ou usuário inválido",
+    "NENHUM_ITEM": "Nenhum item encontrado"
 }
