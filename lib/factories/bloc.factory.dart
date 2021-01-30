@@ -1,3 +1,4 @@
+import 'package:gd_reservas/blocs/aula.bloc.dart';
 import 'package:gd_reservas/blocs/autenticacao.bloc.dart';
 import 'package:gd_reservas/blocs/usuario.bloc.dart';
 import 'package:gd_reservas/factories/repository.factory.dart';
@@ -9,5 +10,9 @@ class BlocFactory {
 
   static AutenticacaoBloc autenticacaoBloc() {
     return AutenticacaoBloc(RepositoryFactory.autenticacaoRepository());
+  }
+
+  static AulaBloc aulaBloc() {
+    return AulaBloc(RepositoryFactory.aulaRepository());
   }
 }
