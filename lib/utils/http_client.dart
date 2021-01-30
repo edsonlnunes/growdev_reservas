@@ -81,4 +81,25 @@ class HttpClient implements IHttpClient {
       return RespostaHttp(error: e);
     }
   }
+
+  @override
+  Future<RespostaHttp> delete(String url, {String token}) async {
+    try {
+      var resposta = await _dio.delete(
+        url,
+        options: Options(
+          headers: {'Authorization': 'Bearer $token'},
+        ),
+      );
+      return RespostaHttp(statusCode: resposta.statusCode, data: resposta.data);
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.RESPONSE) {
+        return RespostaHttp(
+            statusCode: e.response.statusCode, error: e.response.data);
+      }
+      return RespostaHttp(error: e.error);
+    } catch (e) {
+      return RespostaHttp(error: e);
+    }
+  }
 }

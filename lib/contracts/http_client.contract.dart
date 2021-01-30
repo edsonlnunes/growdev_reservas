@@ -15,4 +15,8 @@ abstract class IHttpClient {
     Map<String, dynamic> data, {
     String token,
   });
+  Future<RespostaHttp> delete(
+    String url, {
+    String token,
+  });
 }
