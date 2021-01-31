@@ -39,21 +39,6 @@ class _AulasAgendadasPageState extends State<AulasAgendadasPage> {
           SizedBox(
             height: 15,
           ),
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: 10,
-          //     itemBuilder: (context, index) {
-          //       return AulaCardWidget(
-          //           aula: Aula(
-          //               data: '10/10/2021',
-          //               hora: '18:30',
-          //               status: 'meu status:'),
-          //           callback: () => confirmarCancelamento(context),
-          //           statusLabel: 'Status da aula:\n aguardando',
-          //           iconData: Icons.delete);
-          //     },
-          //   ),
-          // )
           Expanded(
             child: LoaderWidget(
               itens: aulasAgendadas,
