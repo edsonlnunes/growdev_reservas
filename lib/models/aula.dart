@@ -6,6 +6,7 @@ class Aula {
   final String hora;
   final String status;
   final int vagas;
+  final String uidAgendamento;
 
   Aula({
     @required this.data,
@@ -13,6 +14,7 @@ class Aula {
     @required this.status,
     this.uid,
     this.vagas,
+    this.uidAgendamento,
   });
 
   Aula.fromJson(Map<String, dynamic> json)
@@ -20,5 +22,14 @@ class Aula {
         data = json['data'],
         hora = json['hora'],
         status = json['status'],
-        vagas = json['vagas'];
+        vagas = json['vagas'],
+        uidAgendamento = null;
+
+  Aula.fromJsonAgendamento(Map<String, dynamic> json)
+      : uid = json['class']['uid'],
+        data = json['class']['data'],
+        hora = json['class']['hora'],
+        status = json['class']['status'],
+        vagas = json['class']['vagas'],
+        uidAgendamento = json['uid'];
 }
