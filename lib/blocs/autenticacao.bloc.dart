@@ -11,7 +11,7 @@ class AutenticacaoBloc {
     try {
       var usuarioAutenticado = await iAutenticacaoRepository.login(usuario);
       //salvar no banco
-      kUserToken = usuarioAutenticado.token;
+      kUser = usuarioAutenticado;
       return true;
     } catch (e) {
       print(e);

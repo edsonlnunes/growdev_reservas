@@ -21,7 +21,11 @@ class _AulasAgendadasPageState extends State<AulasAgendadasPage> {
   void initState() {
     super.initState();
     aulaController.buscarAulasAgendadas(kUser.growdever).then((value) {
-      aulasAgendadas = value;
+      print(kUser.token);
+      print(kUser.growdever);
+      setState(() {
+        aulasAgendadas = value;
+      });
     });
   }
 
@@ -51,25 +55,26 @@ class _AulasAgendadasPageState extends State<AulasAgendadasPage> {
           //   ),
           // )
           Expanded(
-              child: LoaderWidget(
-            itens: aulasAgendadas,
-            builder: ListView.builder(
-              itemCount: aulasAgendadas?.length ?? 0,
-              itemBuilder: (context, index) {
-                return AulaCardWidget(
-                    aula: aulasAgendadas[index],
-                    callback: () => confirmarCancelamento(context),
-                    statusLabel: 'Status da aula:\n aguardando',
-                    iconData: Icons.delete);
-              },
+            child: LoaderWidget(
+              itens: aulasAgendadas,
+              builder: ListView.builder(
+                itemCount: aulasAgendadas?.length ?? 0,
+                itemBuilder: (context, index) {
+                  return AulaCardWidget(
+                      aula: aulasAgendadas[index],
+                      callback: () => confirmarCancelamento(context, index),
+                      statusLabel: 'Status da aula:\n aguardando',
+                      iconData: Icons.delete);
+                },
+              ),
             ),
-          )),
+          ),
         ],
       ),
     );
   }
 
-  void confirmarCancelamento(BuildContext ctx) {
+  void confirmarCancelamento(BuildContext ctx, int index) {
     showDialog(
       context: ctx,
       barrierDismissible: false,
@@ -79,7 +84,17 @@ class _AulasAgendadasPageState extends State<AulasAgendadasPage> {
         textobotao:
             Localizacoes.of(context).traduzir('CONFIRMAR').toUpperCase(),
         callback: () {
-          Navigator.of(context).pop();
+          print('Callback');
+          aulaController
+              .cancelarAgendamento(aulasAgendadas[index].uidAgendamento)
+              .then((value) {
+            setState(() {
+              if (value) {
+                aulasAgendadas.removeAt(index);
+              }
+            });
+            Navigator.of(context).pop();
+          });
         },
       ),
     );

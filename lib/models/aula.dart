@@ -19,16 +19,16 @@ class Aula {
 
   Aula.fromJson(Map<String, dynamic> json)
       : uid = json['uid'],
-        data = json['data'],
-        hora = json['hora'],
+        data = json['date'],
+        hora = json['hour'],
         status = json['status'],
         vagas = json['vagas'],
         uidAgendamento = null;
 
   Aula.fromJsonAgendamento(Map<String, dynamic> json)
       : uid = json['class']['uid'],
-        data = json['class']['data'],
-        hora = json['class']['hora'],
+        data = json['class']['date'],
+        hora = json['class']['hour'],
         status = json['class']['status'],
         vagas = json['class']['vagas'],
         uidAgendamento = json['uid'];

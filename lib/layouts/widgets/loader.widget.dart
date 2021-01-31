@@ -9,9 +9,12 @@ class LoaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     if (itens == null) {
       return Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
       );
     } else if (itens.isEmpty) {
       return Center(

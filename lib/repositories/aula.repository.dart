@@ -13,7 +13,8 @@ class AulaRepository implements IAulaRepository {
 
   @override
   Future<List<Aula>> buscarAulasDisponiveis() async {
-    RespostaHttp response = await httpClient.get('/classes', token: kUserToken);
+    RespostaHttp response =
+        await httpClient.get('/classes', token: kUser.token);
     if (response.statusCode == 200) {
       List listaJson = response.data['classes'];
       var lista = listaJson.map((aula) => Aula.fromJson(aula)).toList();
@@ -31,7 +32,7 @@ class AulaRepository implements IAulaRepository {
         "growdever_uid": growdeverUid,
         "class_uid": classUid,
       },
-      token: kUserToken,
+      token: kUser.token,
     );
     try {
       if (response.statusCode == 200) {
@@ -51,12 +52,13 @@ class AulaRepository implements IAulaRepository {
   @override
   Future<List<Aula>> buscarAulasAgendadas(String growdeverUid) async {
     RespostaHttp response = await httpClient.get(
-      'growdevers/$growdeverUid',
-      token: kUserToken,
+      '/growdevers/$growdeverUid',
+      token: kUser.token,
     );
+
     try {
       if (response.statusCode == 200) {
-        List listaJson = response.data['scheduled_classes'];
+        List listaJson = response.data['growdever']['scheduled_classes'];
         var lista =
             listaJson.map((aula) => Aula.fromJsonAgendamento(aula)).toList();
         return lista;
@@ -70,9 +72,10 @@ class AulaRepository implements IAulaRepository {
   @override
   Future<bool> cancelarAgendamento(String uidAgendamento) async {
     RespostaHttp response = await httpClient.delete(
-      'class-growdevers/$uidAgendamento',
-      token: kUserToken,
+      '/class-growdevers/$uidAgendamento',
+      token: kUser.token,
     );
+
     if (response.statusCode == 200) {
       return true;
     }
