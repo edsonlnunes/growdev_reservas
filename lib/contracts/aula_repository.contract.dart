@@ -5,7 +5,7 @@ abstract class IAulaRepository {
 
   Future<String> inscricaoAula(String growdeverUid, String classUid);
 
-  Future<List<Aula>> buscarAulasAgendadas();
+  Future<List<Aula>> buscarAulasAgendadas(String growdeverUid);
 
   Future<bool> cancelarAgendamento(String growdeverUid);
 }

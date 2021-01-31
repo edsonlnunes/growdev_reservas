@@ -49,14 +49,33 @@ class AulaRepository implements IAulaRepository {
   }
 
   @override
-  Future<List<Aula>> buscarAulasAgendadas() {
-    // TODO: implement buscarAulasAgendadas
-    throw UnimplementedError();
+  Future<List<Aula>> buscarAulasAgendadas(String growdeverUid) async {
+    RespostaHttp response = await httpClient.get(
+      'growdevers/$growdeverUid',
+      token: kUserToken,
+    );
+    try {
+      if (response.statusCode == 200) {
+        List listaJson = response.data['scheduled_classes'];
+        var lista =
+            listaJson.map((aula) => Aula.fromJsonAgendamento(aula)).toList();
+        return lista;
+      }
+      return <Aula>[];
+    } catch (e) {
+      return <Aula>[];
+    }
   }
 
   @override
-  Future<bool> cancelarAgendamento(String growdeverUid) {
-    // TODO: implement cancelarAgendamento
-    throw UnimplementedError();
+  Future<bool> cancelarAgendamento(String growdeverUid) async {
+    RespostaHttp response = await httpClient.delete(
+      'class-growdevers/$growdeverUid',
+      token: kUserToken,
+    );
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
   }
 }
