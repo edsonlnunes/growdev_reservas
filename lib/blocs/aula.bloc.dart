@@ -13,4 +13,12 @@ class AulaBloc {
   Future<String> inscricaoAula(String growdeverUid, String classUid) async {
     return await aulaRepository.inscricaoAula(growdeverUid, classUid);
   }
+
+  Future<List<Aula>> buscarAulasAgendadas(String growdeverUid) async {
+    return await aulaRepository.buscarAulasAgendadas(growdeverUid);
+  }
+
+  Future<bool> cancelarAgendamento(String uidAgendamento) async {
+    return await aulaRepository.cancelarAgendamento(uidAgendamento);
+  }
 }
