@@ -68,9 +68,9 @@ class AulaRepository implements IAulaRepository {
   }
 
   @override
-  Future<bool> cancelarAgendamento(String growdeverUid) async {
+  Future<bool> cancelarAgendamento(String uidAgendamento) async {
     RespostaHttp response = await httpClient.delete(
-      'class-growdevers/$growdeverUid',
+      'class-growdevers/$uidAgendamento',
       token: kUserToken,
     );
     if (response.statusCode == 200) {
