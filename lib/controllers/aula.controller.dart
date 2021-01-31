@@ -16,7 +16,7 @@ class AulaController {
 
   AulaController(this.usuarioBloc, this.aulaBloc);
 
-  Future inscricaoAula(
+  Future<void> inscricaoAula(
       BuildContext context, String growdeverUid, String classUid) async {
     var response = await aulaBloc.inscricaoAula(growdeverUid, classUid);
     Scaffold.of(context).showSnackBar(
@@ -33,5 +33,13 @@ class AulaController {
     List<Aula> aulas = await aulaBloc.buscarAulasDisponiveis();
     processandoAutenticacao.value = false;
     return aulas;
+  }
+
+  Future<List<Aula>> buscarAulasAgendadas(String growdeverUid) async {
+    return await aulaBloc.buscarAulasAgendadas(growdeverUid);
+  }
+
+  Future<bool> cancelarAgendamento(String uidAgendamento) async {
+    return await aulaBloc.cancelarAgendamento(uidAgendamento);
   }
 }
