@@ -8,9 +8,9 @@ import 'package:gd_reservas/models/usuario.dart';
 class AppController {
   final UsuarioBloc usuarioBloc;
   final AutenticacaoBloc autenticacaoBloc;
-
   final ValueNotifier<bool> processandoAutenticacao =
       ValueNotifier<bool>(false);
+  static Usuario usuarioLogado;
 
   AppController(this.usuarioBloc, this.autenticacaoBloc);
 

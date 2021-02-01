@@ -5,7 +5,12 @@ import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
-class DadosUsuarioPage extends StatelessWidget {
+class DadosUsuarioPage extends StatefulWidget {
+  @override
+  _DadosUsuarioPageState createState() => _DadosUsuarioPageState();
+}
+
+class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
   @override
   Widget build(BuildContext context) {
     return Padding(

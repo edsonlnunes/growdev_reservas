@@ -1,4 +1,5 @@
 import 'package:gd_reservas/contracts/autenticacao_repository.contract.dart';
+import 'package:gd_reservas/controllers/app.controller.dart';
 import 'package:gd_reservas/models/usuario.dart';
 
 class AutenticacaoBloc {
@@ -9,6 +10,10 @@ class AutenticacaoBloc {
   Future<bool> login(Usuario usuario) async {
     try {
       var usuarioAutenticado = await iAutenticacaoRepository.login(usuario);
+
+      if (!(usuarioAutenticado == null)) {
+        AppController.usuarioLogado = usuarioAutenticado;
+      }
       //salvar no banco
       return true;
     } catch (e) {

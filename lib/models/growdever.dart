@@ -10,8 +10,8 @@ class Growdever {
       {"uid": uid, "email": email, "phone": telefone, "program": programa};
 
   Growdever.fromJson(Map<String, dynamic> json)
-      : uid = json['growdever']['name'],
-        email = json['growdever']['email'],
-        telefone = json['growdever']['phone'],
-        programa = json['growdever']['program'];
+      : uid = json['uid'],
+        email = json['email'],
+        telefone = json['phone'],
+        programa = json['program'];
 }
