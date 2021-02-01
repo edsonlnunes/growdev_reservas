@@ -146,27 +146,29 @@ class _CriarContaWidgetState extends State<CriarContaWidget> {
                               ),
                             )
                           : CircularProgressIndicatorButtonWidget(),
-                      onPressed: () async {
-                        setState(() {
-                          loading = true;
-                        });
-                        if (!_formKey.currentState.validate()) {
-                          Scaffold.of(context).showSnackBar(
-                              SnackBar(content: Text('Campo(s) inválido(s)')));
-                        } else {
-                          _formKey.currentState.save();
-                          var criou =
-                              await appController.criarConta(context, usuario);
-                          if (criou) {
-                            Future.delayed(Duration(seconds: 1),
-                                () => appController.proximaTela(context));
-                          }
-                        }
-                        print('setstate');
-                        setState(() {
-                          loading = false;
-                        });
-                      }),
+                      onPressed: loading
+                          ? null
+                          : () async {
+                              setState(() {
+                                loading = true;
+                              });
+                              if (!_formKey.currentState.validate()) {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                    content: Text('Campo(s) inválido(s)')));
+                              } else {
+                                _formKey.currentState.save();
+                                var criou = await appController.criarConta(
+                                    context, usuario);
+                                if (criou) {
+                                  Future.delayed(Duration(seconds: 1),
+                                      () => appController.proximaTela(context));
+                                }
+                              }
+                              print('setstate');
+                              setState(() {
+                                loading = false;
+                              });
+                            }),
                 ),
               ],
             ),

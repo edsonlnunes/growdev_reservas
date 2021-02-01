@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/factories/controller.factory.dart';
+import 'package:gd_reservas/layouts/pages/home.page.dart';
 import 'package:gd_reservas/layouts/widgets/circular_progress_indicator_button.widget.dart';
+import 'package:gd_reservas/models/usuario.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class LoginWidget extends StatefulWidget {
   final Function paraCadastro;
-  final Function(String username, String password) entrar;
-  final ValueNotifier<bool> processandoAutenticacao;
 
-  const LoginWidget({
-    Key key,
-    this.paraCadastro,
-    this.entrar,
-    this.processandoAutenticacao,
-  }) : super(key: key);
+  const LoginWidget({Key key, this.paraCadastro}) : super(key: key);
 
   @override
   _LoginWidgetState createState() => _LoginWidgetState();
@@ -21,6 +17,7 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
+    var appController = ControllerFactory.appController();
     var usernameController = TextEditingController();
     var passwordController = TextEditingController();
     final tamanho = MediaQuery.of(context).size;
@@ -82,7 +79,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 Container(
                   width: double.infinity,
                   child: ValueListenableBuilder(
-                    valueListenable: widget.processandoAutenticacao,
+                    valueListenable: appController.processandoAutenticacao,
                     builder: (BuildContext context, bool value, Widget child) {
                       return RaisedButton(
                         padding: EdgeInsets.all(tamanho.height * 1.7 / 100),
@@ -100,12 +97,37 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   fontSize: tamanho.height * 2.2 / 100,
                                 ),
                               ),
-                        onPressed: () {
-                          widget.entrar(
-                            usernameController.text,
-                            passwordController.text,
-                          );
-                        },
+                        onPressed: appController.processandoAutenticacao.value
+                            ? null
+                            : () {
+                                if (usernameController.text.isNotEmpty &&
+                                    passwordController.text.isNotEmpty) {
+                                  var usuario = Usuario(
+                                    username: usernameController.text,
+                                    password: passwordController.text,
+                                  );
+                                  appController.autenticacao(usuario).then(
+                                    (autenticado) {
+                                      if (autenticado) {
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (_) => HomePage()),
+                                                (route) => false);
+                                      } else {
+                                        Scaffold.of(context).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              Localizacoes.of(context)
+                                                  .traduzir('FALHA_LOGIN'),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  );
+                                }
+                              },
                       );
                     },
                   ),
