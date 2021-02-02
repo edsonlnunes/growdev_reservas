@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gd_reservas/models/aula.dart';
-import 'package:gd_reservas/themes/theme.dart';
+import '../../models/aula.dart';
+import '../../themes/theme.dart';
+import '../../utils/global.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class AulaCardWidget extends StatelessWidget {
@@ -118,9 +119,9 @@ class AulaCardWidget extends StatelessWidget {
                     InkWell(
                       child: Icon(
                         iconData,
-                        color: Color(0xffe16e0e),
+                        color: kUser.growdever != null ? Color(0xffe16e0e) : Colors.transparent,
                       ),
-                      onTap: callback,
+                      onTap: kUser.growdever != null ?  callback : null,                      
                     ),
                   ],
                 ),
