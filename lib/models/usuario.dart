@@ -34,7 +34,9 @@ class Usuario {
         novaSenha = '',
         tipo = json['user']['type'],
         nomeUsuario = json['user']['username'],
-        growdever = Growdever.fromJson(json['user']['growdever']);
+        token = json['token'],
+        growdever =
+            Growdever?.fromJson(json['user']['growdever']) ?? Growdever();
 
   @override
   String toString() {

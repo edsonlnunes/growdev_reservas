@@ -12,10 +12,10 @@ class UsuarioBloc {
   }
 
   Future<RespostaHttp> atualizarInformacoes(Usuario usuario) async {
-    return usuarioRepository.criarConta(usuario);
+    return usuarioRepository.atualizarInformacoes(usuario);
   }
 
   Future<RespostaHttp> atualizarSenha(Usuario usuario) async {
-    return usuarioRepository.criarConta(usuario);
+    return usuarioRepository.atualizarSenha(usuario);
   }
 }

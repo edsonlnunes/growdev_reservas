@@ -10,7 +10,6 @@ class AppController {
   final AutenticacaoBloc autenticacaoBloc;
   final ValueNotifier<bool> processandoAutenticacao =
       ValueNotifier<bool>(false);
-  static Usuario usuarioLogado;
 
   AppController(this.usuarioBloc, this.autenticacaoBloc);
 

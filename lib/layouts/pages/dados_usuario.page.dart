@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gd_reservas/factories/controller.factory.dart';
 import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_formulario.widget.dart';
 import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
+import 'package:gd_reservas/utils/global.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 
 class DadosUsuarioPage extends StatefulWidget {
@@ -40,36 +42,40 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
                     ),
                     SizedBox(height: 20),
                     Text(
-                      'João',
+                      kUsuario.nome,
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Column(
                       children: [
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('USUARIO'),
-                          value: 'joao',
+                          value: kUsuario.nomeUsuario,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context)
                               .traduzir('PROGRAMA_GROWDEV'),
-                          value: 'Starter',
+                          value: kUsuario.growdever.programa,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('EMAIL'),
-                          value: 'joao@gmail.com',
+                          value: kUsuario.growdever.email,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('TELEFONE'),
-                          value: '(51)999999999',
+                          value: kUsuario.growdever.telefone,
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -79,16 +85,22 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
                             size: 32,
                             color: kColorGDLaranja,
                           ),
-                          onPressed: () => atualizarDados(context),
+                          onPressed: () => setState(() {
+                            atualizarDados(context);
+                          }),
                         ),
-                        SizedBox(width: 30),
+                        SizedBox(
+                          width: 30,
+                        ),
                         IconButton(
                           icon: Icon(
                             Icons.lock,
                             size: 32,
                             color: kColorGDLaranja,
                           ),
-                          onPressed: () => atualizarSenha(context),
+                          onPressed: () => setState(() {
+                            atualizarSenha(context);
+                          }),
                         )
                       ],
                     )
@@ -103,6 +115,9 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
   }
 
   void atualizarSenha(BuildContext ctx) {
+    final TextEditingController senhaAtualController = TextEditingController();
+    final TextEditingController novaSenhaController = TextEditingController();
+    var appController = ControllerFactory.appController();
     showDialog(
       context: ctx,
       builder: (BuildContext context) {
@@ -110,6 +125,7 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
           textoBotao: Localizacoes.of(context).traduzir('ATUALIZAR_SENHA'),
           textFields: [
             TextFormField(
+              controller: senhaAtualController,
               decoration: InputDecoration(
                 labelText: Localizacoes.of(context).traduzir('SENHA_ATUAL'),
                 fillColor: kGDBackgroundColor,
@@ -117,6 +133,7 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
               ),
             ),
             TextFormField(
+              controller: novaSenhaController,
               decoration: InputDecoration(
                 labelText: Localizacoes.of(context).traduzir('NOVA_SENHA'),
                 fillColor: kGDBackgroundColor,
@@ -124,8 +141,13 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
               ),
             )
           ],
-          callback: () {
-            // TODO: função de atualizar senha
+          callback: () async {
+            var editUsuario = kUsuario;
+            editUsuario.senha = senhaAtualController.text;
+            editUsuario.novaSenha = novaSenhaController.text;
+            await appController.atualizarSenha(ctx, editUsuario);
+
+            Navigator.of(context).pop();
           },
         );
       },
@@ -133,6 +155,12 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
   }
 
   void atualizarDados(BuildContext ctx) {
+    final TextEditingController emailController =
+        TextEditingController(text: kUsuario.growdever.email);
+    final TextEditingController telefoneController =
+        TextEditingController(text: kUsuario.growdever.telefone);
+    var appController = ControllerFactory.appController();
+
     showDialog(
       context: ctx,
       builder: (BuildContext context) {
@@ -141,6 +169,7 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
               Localizacoes.of(context).traduzir('ATUALIZAR_INFORMACOES'),
           textFields: [
             TextFormField(
+              controller: emailController,
               decoration: InputDecoration(
                 labelText: Localizacoes.of(context).traduzir('EMAIL'),
                 fillColor: kGDBackgroundColor,
@@ -148,6 +177,7 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
               ),
             ),
             TextFormField(
+              controller: telefoneController,
               decoration: InputDecoration(
                 labelText: Localizacoes.of(context).traduzir('TELEFONE'),
                 fillColor: kGDBackgroundColor,
@@ -155,8 +185,15 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
               ),
             )
           ],
-          callback: () {
-            // TODO: função de atualizar senha
+          callback: () async {
+            var editUsuario = kUsuario;
+            editUsuario.growdever.email = emailController.text;
+            editUsuario.growdever.telefone = telefoneController.text;
+            if (await appController.atualizarInformacoes(ctx, editUsuario)) {
+              kUsuario.growdever.email = emailController.text;
+              kUsuario.growdever.telefone = telefoneController.text;
+            }
+            Navigator.of(context).pop();
           },
         );
       },

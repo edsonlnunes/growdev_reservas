@@ -18,14 +18,22 @@ class UsuarioRepository implements IUsuarioRepository {
   @override
   Future<RespostaHttp> atualizarInformacoes(Usuario usuario) async {
     var url = '/users/${usuario.growdever.uid}';
-    var response = await httpClient.put(url, usuario.growdever.toJson());
+    var response = await httpClient.put(
+      url,
+      usuario.growdever.toJson(),
+      token: usuario.token,
+    );
     return response;
   }
 
   @override
   Future<RespostaHttp> atualizarSenha(Usuario usuario) async {
     var url = '/users/${usuario.growdever.uid}';
-    var response = await httpClient.put(url, usuario.toJsonNovaSenha());
+    var response = await httpClient.put(
+      url,
+      usuario.toJsonNovaSenha(),
+      token: usuario.token,
+    );
     return response;
   }
 }
