@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gd_reservas/layouts/widgets/titulo.widget.dart';
 import 'package:gd_reservas/layouts/widgets/modal_simples.widget.dart';
 import 'package:gd_reservas/repositories/aula.repository.dart';
+import 'package:gd_reservas/utils/global.dart';
 import 'package:gd_reservas/utils/http_client.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
 import '../../models/aula.dart';
@@ -17,6 +18,14 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
       AulaRepository(HttpClient('https://growdev-test-node.herokuapp.com/'));
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('kUser');
+    print(kUser);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(70, 0, 0, 0),
@@ -27,19 +36,38 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
             height: 15,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return AulaCardWidget(
-                  aula: Aula(
-                    data: '26/11/2020',
-                    hora: '13:30h',
-                    status: 'Aguardando',
-                    vagas: 4,
-                  ),
-                  statusLabel: 'Status',
-                  callback: () => confirmarAgendamento(context),
-                  iconData: Icons.add,
+            child: FutureBuilder(
+              future: repository.buscarAulasDisponiveis(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return CircularProgressIndicator();
+                }
+                return ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    Aula aula = snapshot.data[index];
+                    return AulaCardWidget(
+                      aula: Aula(
+                        data: aula.data,
+                        hora: aula.hora,
+                        status: aula.status,
+                        vagas: aula.vagas,
+                      ),
+                      statusLabel: 'Status',
+                      callback: () async {
+                        String mensagem = await confirmarAgendamento(
+                            context, kUser?.growdever, aula.uid);
+                        final snackBar = SnackBar(
+                          content: Text(
+                            Localizacoes.of(context).traduzir(mensagem),
+                          ),
+                          duration: Duration(seconds: 3),
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
+                      },
+                      iconData: Icons.add,
+                    );
+                  },
                 );
               },
             ),
@@ -49,8 +77,9 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
     );
   }
 
-  void confirmarAgendamento(BuildContext ctx) {
-    showDialog(
+  Future<String> confirmarAgendamento(
+      BuildContext ctx, String growdeverUid, String aulaUid) async {
+    String resposta = await showDialog(
       context: ctx,
       barrierDismissible: false,
       builder: (context) => ModalSimplesWidget(
@@ -58,10 +87,13 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
             Localizacoes.of(context).traduzir('CONFIRMACAO_INSCRICAO_AULA'),
         textobotao:
             Localizacoes.of(context).traduzir('CONFIRMAR').toUpperCase(),
-        callback: () {
-          Navigator.of(context).pop();
+        callback: () async {
+          String resposta =
+              await repository.inscricaoAula(growdeverUid, aulaUid);
+          Navigator.of(context).pop(resposta);
         },
       ),
     );
+    return resposta;
   }
 }
