@@ -6,6 +6,7 @@ import 'package:gd_reservas/layouts/widgets/rich_text_label.widget.dart';
 import 'package:gd_reservas/themes/theme.dart';
 import 'package:gd_reservas/utils/global.dart';
 import 'package:gd_reservas/utils/lang/localizacoes.dart';
+import 'package:gd_reservas/models/usuario.dart';
 
 class DadosUsuarioPage extends StatefulWidget {
   @override
@@ -13,6 +14,13 @@ class DadosUsuarioPage extends StatefulWidget {
 }
 
 class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
+  final Usuario usu = kUsuario;
+
+  // @override
+  // void initState() {
+  //   usu = kUsuario;
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,20 +64,20 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
                       children: [
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('USUARIO'),
-                          value: kUsuario.nomeUsuario,
+                          value: usu.nomeUsuario,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context)
                               .traduzir('PROGRAMA_GROWDEV'),
-                          value: kUsuario.growdever.programa,
+                          value: usu.growdever.programa,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('EMAIL'),
-                          value: kUsuario.growdever.email,
+                          value: usu.growdever.email,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('TELEFONE'),
-                          value: kUsuario.growdever.telefone,
+                          value: usu.growdever.telefone,
                         ),
                       ],
                     ),
@@ -85,9 +93,11 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
                             size: 32,
                             color: kColorGDLaranja,
                           ),
-                          onPressed: () => setState(() {
-                            atualizarDados(context);
-                          }),
+                          onPressed: () {
+                            setState(() {
+                              atualizarDados(context);
+                            });
+                          },
                         ),
                         SizedBox(
                           width: 30,
@@ -98,9 +108,7 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
                             size: 32,
                             color: kColorGDLaranja,
                           ),
-                          onPressed: () => setState(() {
-                            atualizarSenha(context);
-                          }),
+                          onPressed: () => atualizarSenha(context),
                         )
                       ],
                     )
@@ -156,9 +164,9 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
 
   void atualizarDados(BuildContext ctx) {
     final TextEditingController emailController =
-        TextEditingController(text: kUsuario.growdever.email);
+        TextEditingController(text: usu.growdever.email);
     final TextEditingController telefoneController =
-        TextEditingController(text: kUsuario.growdever.telefone);
+        TextEditingController(text: usu.growdever.telefone);
     var appController = ControllerFactory.appController();
 
     showDialog(
@@ -186,10 +194,12 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
             )
           ],
           callback: () async {
-            var editUsuario = kUsuario;
+            var editUsuario = usu;
             editUsuario.growdever.email = emailController.text;
             editUsuario.growdever.telefone = telefoneController.text;
             if (await appController.atualizarInformacoes(ctx, editUsuario)) {
+              usu.growdever.email = emailController.text;
+              usu.growdever.telefone = telefoneController.text;
               kUsuario.growdever.email = emailController.text;
               kUsuario.growdever.telefone = telefoneController.text;
             }

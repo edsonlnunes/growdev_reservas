@@ -1,6 +1,7 @@
 import 'package:gd_reservas/models/growdever.dart';
 
 class Usuario {
+  String id;
   String nome;
   String senha;
   String novaSenha;
@@ -10,6 +11,7 @@ class Usuario {
   Growdever growdever;
 
   Usuario({
+    this.id,
     this.nome,
     this.senha,
     this.novaSenha,
@@ -29,7 +31,8 @@ class Usuario {
       {"username": nomeUsuario, "oldPassword": senha, "password": novaSenha};
 
   Usuario.fromJsonLogin(Map<String, dynamic> json)
-      : nome = json['user']['name'],
+      : id = json['user']['uid'],
+        nome = json['user']['name'],
         senha = '',
         novaSenha = '',
         tipo = json['user']['type'],

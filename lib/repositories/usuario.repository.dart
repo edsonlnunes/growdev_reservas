@@ -17,7 +17,7 @@ class UsuarioRepository implements IUsuarioRepository {
 
   @override
   Future<RespostaHttp> atualizarInformacoes(Usuario usuario) async {
-    var url = '/users/${usuario.growdever.uid}';
+    var url = '/growdevers/${usuario.growdever.uid}';
     var response = await httpClient.put(
       url,
       usuario.growdever.toJson(),
@@ -28,7 +28,7 @@ class UsuarioRepository implements IUsuarioRepository {
 
   @override
   Future<RespostaHttp> atualizarSenha(Usuario usuario) async {
-    var url = '/users/${usuario.growdever.uid}';
+    var url = '/users/${usuario.id}';
     var response = await httpClient.put(
       url,
       usuario.toJsonNovaSenha(),
