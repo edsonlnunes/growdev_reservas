@@ -10,8 +10,8 @@ class AutenticacaoBloc {
   Future<bool> login(Usuario usuario) async {
     try {
       var usuarioAutenticado = await iAutenticacaoRepository.login(usuario);
-      //salvar no banco
-      kUser = usuarioAutenticado;
+
+      kUsuario = usuarioAutenticado;
       return true;
     } catch (e) {
       print(e);

@@ -103,8 +103,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 if (usernameController.text.isNotEmpty &&
                                     passwordController.text.isNotEmpty) {
                                   var usuario = Usuario(
-                                    username: usernameController.text,
-                                    password: passwordController.text,
+                                    nomeUsuario: usernameController.text,
+                                    senha: passwordController.text,
                                   );
                                   appController.autenticacao(usuario).then(
                                     (autenticado) {
