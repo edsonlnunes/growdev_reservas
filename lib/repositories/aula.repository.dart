@@ -1,5 +1,3 @@
-import 'package:gd_reservas/utils/lang/localizacoes.dart';
-
 import '../contracts/aula_repository.contract.dart';
 import '../contracts/http_client.contract.dart';
 import '../models/aula.dart';
@@ -14,7 +12,7 @@ class AulaRepository implements IAulaRepository {
   @override
   Future<List<Aula>> buscarAulasDisponiveis() async {
     RespostaHttp response =
-        await httpClient.get('/classes', token: kUser.token);
+        await httpClient.get('/classes', token: kUsuario.token);
     if (response.statusCode == 200) {
       List listaJson = response.data['classes'];
       var lista = listaJson.map((aula) => Aula.fromJson(aula)).toList();
@@ -32,7 +30,7 @@ class AulaRepository implements IAulaRepository {
         "growdever_uid": growdeverUid,
         "class_uid": classUid,
       },
-      token: kUser.token,
+      token: kUsuario.token,
     );
     try {
       if (response.statusCode == 200) {
@@ -53,7 +51,7 @@ class AulaRepository implements IAulaRepository {
   Future<List<Aula>> buscarAulasAgendadas(String growdeverUid) async {
     RespostaHttp response = await httpClient.get(
       '/growdevers/$growdeverUid',
-      token: kUser.token,
+      token: kUsuario.token,
     );
 
     try {
@@ -73,7 +71,7 @@ class AulaRepository implements IAulaRepository {
   Future<bool> cancelarAgendamento(String uidAgendamento) async {
     RespostaHttp response = await httpClient.delete(
       '/class-growdevers/$uidAgendamento',
-      token: kUser.token,
+      token: kUsuario.token,
     );
 
     if (response.statusCode == 200) {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../blocs/aula.bloc.dart';
 import '../blocs/usuario.bloc.dart';
-import '../layouts/pages/acesso.page.dart';
 import '../models/aula.dart';
 import '../utils/lang/localizacoes.dart';
 

@@ -119,9 +119,11 @@ class AulaCardWidget extends StatelessWidget {
                     InkWell(
                       child: Icon(
                         iconData,
-                        color: kUser.growdever != null ? Color(0xffe16e0e) : Colors.transparent,
+                        color: kUsuario.growdever != null
+                            ? Color(0xffe16e0e)
+                            : Colors.transparent,
                       ),
-                      onTap: kUser.growdever != null ?  callback : null,                      
+                      onTap: kUsuario.growdever != null ? callback : null,
                     ),
                   ],
                 ),

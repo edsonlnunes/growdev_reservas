@@ -21,8 +21,6 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('kUser');
-    print(kUser);
   }
 
   @override
@@ -56,7 +54,7 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
                       statusLabel: 'Status',
                       callback: () async {
                         String mensagem = await confirmarAgendamento(
-                            context, kUser?.growdever, aula.uid);
+                            context, kUsuario.growdever.uid, aula.uid);
                         final snackBar = SnackBar(
                           content: Text(
                             Localizacoes.of(context).traduzir(mensagem),

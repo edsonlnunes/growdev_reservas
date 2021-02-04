@@ -16,7 +16,7 @@ class CriarContaWidget extends StatefulWidget {
 
 class _CriarContaWidgetState extends State<CriarContaWidget> {
   Usuario usuario = Usuario(
-    type: 'Growdever',
+    tipo: 'Growdever',
   );
   bool loading = false;
   final _formKey = GlobalKey<FormState>();
@@ -54,7 +54,7 @@ class _CriarContaWidgetState extends State<CriarContaWidget> {
                             var type = 'name';
                             return appController.validarDados(valor, type);
                           },
-                          onSaved: (valor) => usuario.name = valor,
+                          onSaved: (valor) => usuario.nome = valor,
                           style:
                               TextStyle(fontSize: tamanho.height * 2.2 / 100),
                           decoration: InputDecoration(
@@ -79,7 +79,7 @@ class _CriarContaWidgetState extends State<CriarContaWidget> {
                             var type = 'username';
                             return appController.validarDados(valor, type);
                           },
-                          onSaved: (valor) => usuario.username = valor,
+                          onSaved: (valor) => usuario.nomeUsuario = valor,
                           style:
                               TextStyle(fontSize: tamanho.height * 2.2 / 100),
                           decoration: InputDecoration(
@@ -104,7 +104,7 @@ class _CriarContaWidgetState extends State<CriarContaWidget> {
                             var type = 'password';
                             return appController.validarDados(valor, type);
                           },
-                          onSaved: (valor) => usuario.password = valor,
+                          onSaved: (valor) => usuario.senha = valor,
                           obscureText: true,
                           style:
                               TextStyle(fontSize: tamanho.height * 2.2 / 100),

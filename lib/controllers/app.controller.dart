@@ -8,7 +8,6 @@ import 'package:gd_reservas/models/usuario.dart';
 class AppController {
   final UsuarioBloc usuarioBloc;
   final AutenticacaoBloc autenticacaoBloc;
-
   final ValueNotifier<bool> processandoAutenticacao =
       ValueNotifier<bool>(false);
 
@@ -33,6 +32,57 @@ class AppController {
   Future<bool> criarConta(BuildContext context, Usuario usuario) async {
     try {
       var response = await usuarioBloc.usuarioRepository.criarConta(usuario);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: response.statusCode == 200
+              ? (Text(response.data['message']))
+              : Text(
+                  response.error['message'],
+                ),
+        ),
+      );
+      return response.statusCode == 200 ? true : false;
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Ocorreu um erro no servidor! Tente novamente mais tarde'),
+        ),
+      );
+      return false;
+    }
+  }
+
+  Future<bool> atualizarInformacoes(
+      BuildContext context, Usuario usuario) async {
+    try {
+      var response =
+          await usuarioBloc.usuarioRepository.atualizarInformacoes(usuario);
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: response.statusCode == 200
+              ? (Text(response.data['message']))
+              : Text(
+                  response.error['message'],
+                ),
+        ),
+      );
+      return response.statusCode == 200 ? true : false;
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Ocorreu um erro no servidor! Tente novamente mais tarde'),
+        ),
+      );
+      return false;
+    }
+  }
+
+  Future<bool> atualizarSenha(BuildContext context, Usuario usuario) async {
+    try {
+      var response =
+          await usuarioBloc.usuarioRepository.atualizarSenha(usuario);
       Scaffold.of(context).showSnackBar(
         SnackBar(
           content: response.statusCode == 200
