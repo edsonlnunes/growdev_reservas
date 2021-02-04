@@ -14,13 +14,6 @@ class DadosUsuarioPage extends StatefulWidget {
 }
 
 class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
-  final Usuario usu = kUsuario;
-
-  // @override
-  // void initState() {
-  //   usu = kUsuario;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -64,20 +57,22 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
                       children: [
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('USUARIO'),
-                          value: usu.nomeUsuario,
+                          value: kUsuario.nomeUsuario,
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context)
                               .traduzir('PROGRAMA_GROWDEV'),
-                          value: usu.growdever.programa,
+                          value: kUsuario.growdever.programa,
                         ),
-                        RichTextLabel(
-                          label: Localizacoes.of(context).traduzir('EMAIL'),
-                          value: usu.growdever.email,
+                        FittedBox(
+                          child: RichTextLabel(
+                            label: Localizacoes.of(context).traduzir('EMAIL'),
+                            value: kUsuario.growdever.email,
+                          ),
                         ),
                         RichTextLabel(
                           label: Localizacoes.of(context).traduzir('TELEFONE'),
-                          value: usu.growdever.telefone,
+                          value: kUsuario.growdever.telefone,
                         ),
                       ],
                     ),
@@ -164,9 +159,9 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
 
   void atualizarDados(BuildContext ctx) {
     final TextEditingController emailController =
-        TextEditingController(text: usu.growdever.email);
+        TextEditingController(text: kUsuario.growdever.email);
     final TextEditingController telefoneController =
-        TextEditingController(text: usu.growdever.telefone);
+        TextEditingController(text: kUsuario.growdever.telefone);
     var appController = ControllerFactory.appController();
 
     showDialog(
@@ -194,14 +189,14 @@ class _DadosUsuarioPageState extends State<DadosUsuarioPage> {
             )
           ],
           callback: () async {
-            var editUsuario = usu;
+            var editUsuario = kUsuario;
             editUsuario.growdever.email = emailController.text;
             editUsuario.growdever.telefone = telefoneController.text;
             if (await appController.atualizarInformacoes(ctx, editUsuario)) {
-              usu.growdever.email = emailController.text;
-              usu.growdever.telefone = telefoneController.text;
-              kUsuario.growdever.email = emailController.text;
-              kUsuario.growdever.telefone = telefoneController.text;
+              setState(() {
+                kUsuario.growdever.email = emailController.text;
+                kUsuario.growdever.telefone = telefoneController.text;
+              });
             }
             Navigator.of(context).pop();
           },

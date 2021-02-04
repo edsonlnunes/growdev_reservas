@@ -21,8 +21,6 @@ class _AulasDisponiveisPageState extends State<AulasDisponiveisPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('kUser');
-    print(kUsuario);
   }
 
   @override

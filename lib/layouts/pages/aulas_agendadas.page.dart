@@ -21,8 +21,6 @@ class _AulasAgendadasPageState extends State<AulasAgendadasPage> {
   void initState() {
     super.initState();
     aulaController.buscarAulasAgendadas(kUsuario.growdever.uid).then((value) {
-      print(kUsuario.token);
-      print(kUsuario.growdever);
       setState(() {
         aulasAgendadas = value;
       });
